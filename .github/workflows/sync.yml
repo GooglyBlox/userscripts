@@ -1,0 +1,40 @@
+name: Sync Greasyfork Scripts
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run Greasyfork Sync
+        env:
+          GF_USER_ID: '1289637'
+        run: node sync-greasyfork.js
+
+      - name: Commit and Push Changes
+        run: |
+          git config user.name "GooglyBlox"
+          git config user.email "53668973+GooglyBlox@users.noreply.github.com"
+          
+          if [[ -n "$(git status --porcelain)" ]]; then
+            git add .
+            git commit -m "🔄 Sync scripts from Greasyfork"
+            git push
+            echo "Changes committed and pushed"
+          else
+            echo "No changes to commit"
+          fi
