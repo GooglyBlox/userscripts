@@ -25,16 +25,27 @@ jobs:
           GF_USER_ID: '1289637'
         run: node sync-greasyfork.js
 
+      - name: Check for changes
+        id: changes
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected"
+          else
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected"
+          fi
+
       - name: Commit and Push Changes
+        if: steps.changes.outputs.has_changes == 'true'
         run: |
           git config user.name "GooglyBlox"
           git config user.email "53668973+GooglyBlox@users.noreply.github.com"
-          
-          if [[ -n "$(git status --porcelain)" ]]; then
-            git add .
-            git commit -m "🔄 Sync scripts from Greasyfork"
-            git push
-            echo "Changes committed and pushed"
-          else
-            echo "No changes to commit"
-          fi
+          git add .
+          git commit -m "🔄 Update userscripts from Greasyfork"
+          git push
+          echo "Changes committed"
+
+      - name: No Changes
+        if: steps.changes.outputs.has_changes == 'false'
+        run: echo "No script updates found - no commit needed"

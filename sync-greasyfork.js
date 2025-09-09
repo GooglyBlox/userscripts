@@ -132,6 +132,11 @@ Last updated: ${new Date(script.created_at).toLocaleDateString()}
   }
 
   async generateMainReadme(syncedScripts) {
+    if (!this.changes) {
+      console.log('No script changes detected, skipping README update');
+      return;
+    }
+  
     const categories = {};
     
     syncedScripts.forEach(script => {
@@ -140,18 +145,18 @@ Last updated: ${new Date(script.created_at).toLocaleDateString()}
       }
       categories[script.category].push(script);
     });
-
+  
     let content = `# Greasyfork Scripts Mirror
-
-This repository contains all userscripts published by **${CONFIG.author}** on Greasyfork.
-
-**Total Scripts:** ${syncedScripts.length}
-**Last Sync:** ${new Date().toLocaleString()}
-
-## Categories
-
-`;
-
+  
+  This repository contains all userscripts published by **${CONFIG.author}** on Greasyfork.
+  
+  **Total Scripts:** ${syncedScripts.length}
+  **Last Updated:** ${new Date().toLocaleString()}
+  
+  ## Categories
+  
+  `;
+  
     Object.keys(categories).sort().forEach(category => {
       const scripts = categories[category].sort((a, b) => a.name.localeCompare(b.name));
       content += `\n### ${category} (${scripts.length})\n\n`;
@@ -164,7 +169,10 @@ This repository contains all userscripts published by **${CONFIG.author}** on Gr
 
     content += `\n---\n*Auto-generated from Greasyfork API*\n`;
     
-    await this.writeFileIfChanged(path.join(CONFIG.baseDir, 'README.md'), content);
+    const readmeChanged = await this.writeFileIfChanged(path.join(CONFIG.baseDir, 'README.md'), content);
+    if (readmeChanged) {
+      console.log('README updated due to script changes');
+    }
   }
 
   async run() {
