@@ -1,5 +1,5 @@
 {
-  "lastSync": "2025-09-09T01:09:48.864Z",
+  "lastSync": "2025-09-09T01:32:35.078Z",
   "scripts": [
     {
       "id": 492802,
@@ -7,7 +7,7 @@
       "version": "1.9",
       "category": "Misc",
       "slug": "numerade-video-viewer",
-      "lastSync": "2025-09-09T01:09:34.723Z"
+      "lastSync": "2025-09-09T01:32:22.436Z"
     },
     {
       "id": 499882,
@@ -15,7 +15,7 @@
       "version": "1.0",
       "category": "Misc",
       "slug": "soundsnap-audio-downloader",
-      "lastSync": "2025-09-09T01:09:34.944Z"
+      "lastSync": "2025-09-09T01:32:22.809Z"
     },
     {
       "id": 525712,
@@ -23,7 +23,7 @@
       "version": "1.1",
       "category": "GitHub",
       "slug": "github-profile-time-converter",
-      "lastSync": "2025-09-09T01:09:35.454Z"
+      "lastSync": "2025-09-09T01:32:23.463Z"
     },
     {
       "id": 525714,
@@ -31,7 +31,7 @@
       "version": "1.0",
       "category": "Misc",
       "slug": "chatgpt-edit-cancel-confirmation",
-      "lastSync": "2025-09-09T01:09:36.454Z"
+      "lastSync": "2025-09-09T01:32:24.090Z"
     },
     {
       "id": 525719,
@@ -39,7 +39,7 @@
       "version": "1.3",
       "category": "Instagram",
       "slug": "instagram-profile-picture-opener",
-      "lastSync": "2025-09-09T01:09:36.961Z"
+      "lastSync": "2025-09-09T01:32:24.742Z"
     },
     {
       "id": 525727,
@@ -47,7 +47,7 @@
       "version": "1.5",
       "category": "GitHub",
       "slug": "github-notifications-highlight",
-      "lastSync": "2025-09-09T01:09:37.449Z"
+      "lastSync": "2025-09-09T01:32:25.254Z"
     },
     {
       "id": 532268,
@@ -55,7 +55,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-io-random-comic-button",
-      "lastSync": "2025-09-09T01:09:38.456Z"
+      "lastSync": "2025-09-09T01:32:26.252Z"
     },
     {
       "id": 534227,
@@ -63,7 +63,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "remove-comick-sidebar",
-      "lastSync": "2025-09-09T01:09:38.970Z"
+      "lastSync": "2025-09-09T01:32:26.903Z"
     },
     {
       "id": 538153,
@@ -71,7 +71,7 @@
       "version": "1.1",
       "category": "Comick",
       "slug": "comick-io-comment-counter",
-      "lastSync": "2025-09-09T01:09:39.635Z"
+      "lastSync": "2025-09-09T01:32:27.538Z"
     },
     {
       "id": 539869,
@@ -79,7 +79,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-dark-mode-enhancer",
-      "lastSync": "2025-09-09T01:09:39.880Z"
+      "lastSync": "2025-09-09T01:32:28.078Z"
     },
     {
       "id": 540804,
@@ -87,7 +87,7 @@
       "version": "1.1",
       "category": "Comick",
       "slug": "comick-comic-type-column",
-      "lastSync": "2025-09-09T01:09:40.875Z"
+      "lastSync": "2025-09-09T01:32:28.789Z"
     },
     {
       "id": 540889,
@@ -95,7 +95,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-io-comment-image-minimizer",
-      "lastSync": "2025-09-09T01:09:41.836Z"
+      "lastSync": "2025-09-09T01:32:29.272Z"
     },
     {
       "id": 541476,
@@ -103,7 +103,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-list-date-viewer",
-      "lastSync": "2025-09-09T01:09:42.420Z"
+      "lastSync": "2025-09-09T01:32:29.791Z"
     },
     {
       "id": 542278,
@@ -111,7 +111,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-random-comic",
-      "lastSync": "2025-09-09T01:09:42.967Z"
+      "lastSync": "2025-09-09T01:32:30.272Z"
     },
     {
       "id": 543968,
@@ -119,7 +119,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "convert-comick-sidebar-to-rows",
-      "lastSync": "2025-09-09T01:09:43.579Z"
+      "lastSync": "2025-09-09T01:32:30.649Z"
     },
     {
       "id": 544792,
@@ -127,7 +127,7 @@
       "version": "1.2",
       "category": "Comick",
       "slug": "comick-mangaupdates-import",
-      "lastSync": "2025-09-09T01:09:44.221Z"
+      "lastSync": "2025-09-09T01:32:31.119Z"
     },
     {
       "id": 545346,
@@ -135,7 +135,7 @@
       "version": "1.1",
       "category": "Comick",
       "slug": "comick-mention-notifier",
-      "lastSync": "2025-09-09T01:09:45.222Z"
+      "lastSync": "2025-09-09T01:32:31.905Z"
     },
     {
       "id": 545352,
@@ -143,7 +143,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-chapter-timer",
-      "lastSync": "2025-09-09T01:09:46.250Z"
+      "lastSync": "2025-09-09T01:32:32.382Z"
     },
     {
       "id": 545969,
@@ -151,7 +151,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-io-native-zoom-control",
-      "lastSync": "2025-09-09T01:09:46.570Z"
+      "lastSync": "2025-09-09T01:32:32.858Z"
     },
     {
       "id": 546538,
@@ -159,7 +159,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-anime-planet-import",
-      "lastSync": "2025-09-09T01:09:47.023Z"
+      "lastSync": "2025-09-09T01:32:33.261Z"
     },
     {
       "id": 547820,
@@ -167,7 +167,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "remove-comick-io-translator-entry-lines",
-      "lastSync": "2025-09-09T01:09:47.303Z"
+      "lastSync": "2025-09-09T01:32:34.093Z"
     },
     {
       "id": 548074,
@@ -175,7 +175,7 @@
       "version": "1.0",
       "category": "Comick",
       "slug": "comick-auto-follow-on-read",
-      "lastSync": "2025-09-09T01:09:47.810Z"
+      "lastSync": "2025-09-09T01:32:34.576Z"
     },
     {
       "id": 548885,
@@ -183,7 +183,7 @@
       "version": "1.0",
       "category": "Roblox",
       "slug": "roblox-friends-banned-account-name-revealer",
-      "lastSync": "2025-09-09T01:09:48.744Z"
+      "lastSync": "2025-09-09T01:32:35.078Z"
     }
   ]
 }
