@@ -2,7 +2,7 @@ name: Sync Greasyfork Scripts
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 jobs:
@@ -18,11 +18,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: "20"
 
       - name: Run Greasyfork Sync
         env:
-          GF_USER_ID: '1289637'
+          GF_USER_ID: "1289637"
         run: node sync-greasyfork.js
 
       - name: Check for changes
@@ -48,4 +48,4 @@ jobs:
 
       - name: No Changes
         if: steps.changes.outputs.has_changes == 'false'
-        run: echo "No script updates found - no commit needed"
+        run: echo "All scripts are up to date"
