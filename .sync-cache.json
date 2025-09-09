@@ -1,0 +1,189 @@
+{
+  "lastSync": "2025-09-09T01:09:48.864Z",
+  "scripts": [
+    {
+      "id": 492802,
+      "name": "Numerade Video Viewer",
+      "version": "1.9",
+      "category": "Misc",
+      "slug": "numerade-video-viewer",
+      "lastSync": "2025-09-09T01:09:34.723Z"
+    },
+    {
+      "id": 499882,
+      "name": "Soundsnap Audio Downloader",
+      "version": "1.0",
+      "category": "Misc",
+      "slug": "soundsnap-audio-downloader",
+      "lastSync": "2025-09-09T01:09:34.944Z"
+    },
+    {
+      "id": 525712,
+      "name": "GitHub Profile Time Converter",
+      "version": "1.1",
+      "category": "GitHub",
+      "slug": "github-profile-time-converter",
+      "lastSync": "2025-09-09T01:09:35.454Z"
+    },
+    {
+      "id": 525714,
+      "name": "ChatGPT Edit Cancel Confirmation",
+      "version": "1.0",
+      "category": "Misc",
+      "slug": "chatgpt-edit-cancel-confirmation",
+      "lastSync": "2025-09-09T01:09:36.454Z"
+    },
+    {
+      "id": 525719,
+      "name": "Instagram Profile Picture Opener",
+      "version": "1.3",
+      "category": "Instagram",
+      "slug": "instagram-profile-picture-opener",
+      "lastSync": "2025-09-09T01:09:36.961Z"
+    },
+    {
+      "id": 525727,
+      "name": "GitHub Notifications Highlight",
+      "version": "1.5",
+      "category": "GitHub",
+      "slug": "github-notifications-highlight",
+      "lastSync": "2025-09-09T01:09:37.449Z"
+    },
+    {
+      "id": 532268,
+      "name": "Comick.io Random Comic Button",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-io-random-comic-button",
+      "lastSync": "2025-09-09T01:09:38.456Z"
+    },
+    {
+      "id": 534227,
+      "name": "Remove Comick Sidebar",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "remove-comick-sidebar",
+      "lastSync": "2025-09-09T01:09:38.970Z"
+    },
+    {
+      "id": 538153,
+      "name": "Comick.io Comment Counter",
+      "version": "1.1",
+      "category": "Comick",
+      "slug": "comick-io-comment-counter",
+      "lastSync": "2025-09-09T01:09:39.635Z"
+    },
+    {
+      "id": 539869,
+      "name": "Comick Dark Mode Enhancer",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-dark-mode-enhancer",
+      "lastSync": "2025-09-09T01:09:39.880Z"
+    },
+    {
+      "id": 540804,
+      "name": "Comick Comic Type Column",
+      "version": "1.1",
+      "category": "Comick",
+      "slug": "comick-comic-type-column",
+      "lastSync": "2025-09-09T01:09:40.875Z"
+    },
+    {
+      "id": 540889,
+      "name": "Comick.io Comment Image Minimizer",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-io-comment-image-minimizer",
+      "lastSync": "2025-09-09T01:09:41.836Z"
+    },
+    {
+      "id": 541476,
+      "name": "Comick List Date Viewer",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-list-date-viewer",
+      "lastSync": "2025-09-09T01:09:42.420Z"
+    },
+    {
+      "id": 542278,
+      "name": "Comick Random Comic",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-random-comic",
+      "lastSync": "2025-09-09T01:09:42.967Z"
+    },
+    {
+      "id": 543968,
+      "name": "Convert Comick Sidebar to Rows",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "convert-comick-sidebar-to-rows",
+      "lastSync": "2025-09-09T01:09:43.579Z"
+    },
+    {
+      "id": 544792,
+      "name": "Comick MangaUpdates Import",
+      "version": "1.2",
+      "category": "Comick",
+      "slug": "comick-mangaupdates-import",
+      "lastSync": "2025-09-09T01:09:44.221Z"
+    },
+    {
+      "id": 545346,
+      "name": "Comick Mention Notifier",
+      "version": "1.1",
+      "category": "Comick",
+      "slug": "comick-mention-notifier",
+      "lastSync": "2025-09-09T01:09:45.222Z"
+    },
+    {
+      "id": 545352,
+      "name": "Comick Chapter Timer",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-chapter-timer",
+      "lastSync": "2025-09-09T01:09:46.250Z"
+    },
+    {
+      "id": 545969,
+      "name": "Comick.io Native Zoom Control",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-io-native-zoom-control",
+      "lastSync": "2025-09-09T01:09:46.570Z"
+    },
+    {
+      "id": 546538,
+      "name": "Comick Anime Planet Import",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-anime-planet-import",
+      "lastSync": "2025-09-09T01:09:47.023Z"
+    },
+    {
+      "id": 547820,
+      "name": "Remove Comick.io Translator Entry Lines",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "remove-comick-io-translator-entry-lines",
+      "lastSync": "2025-09-09T01:09:47.303Z"
+    },
+    {
+      "id": 548074,
+      "name": "Comick Auto Follow on Read",
+      "version": "1.0",
+      "category": "Comick",
+      "slug": "comick-auto-follow-on-read",
+      "lastSync": "2025-09-09T01:09:47.810Z"
+    },
+    {
+      "id": 548885,
+      "name": "Roblox Friends Banned Account Name Revealer",
+      "version": "1.0",
+      "category": "Roblox",
+      "slug": "roblox-friends-banned-account-name-revealer",
+      "lastSync": "2025-09-09T01:09:48.744Z"
+    }
+  ]
+}
