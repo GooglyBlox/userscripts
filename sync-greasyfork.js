@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import crypto from "node:crypto";
 
 const CONFIG = {
   userId: process.env.GF_USER_ID || "1289637",
@@ -10,6 +11,10 @@ const CONFIG = {
 };
 
 class GreasyforkSync {
+  constructor() {
+    this.hasChanges = false;
+  }
+
   async fetchJson(url) {
     const response = await fetch(url, {
       headers: { "User-Agent": "greasyfork-sync/1.0" },
@@ -86,6 +91,27 @@ Last updated: ${new Date(script.created_at).toLocaleDateString()}
 `;
   }
 
+  async writeFileIfChanged(filePath, content) {
+    try {
+      const existing = await fs.readFile(filePath, "utf8");
+      const existingHash = crypto
+        .createHash("sha256")
+        .update(existing)
+        .digest("hex");
+      const newHash = crypto.createHash("sha256").update(content).digest("hex");
+
+      if (existingHash === newHash) {
+        return false;
+      }
+    } catch (error) {
+      // File doesn't exist, will be created
+    }
+
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, content, "utf8");
+    return true;
+  }
+
   async syncScript(script) {
     const category = this.extractCategory(script);
     const slug = this.slugify(script.name);
@@ -94,15 +120,22 @@ Last updated: ${new Date(script.created_at).toLocaleDateString()}
     const userJsPath = path.join(scriptDir, `${slug}.user.js`);
     const readmePath = path.join(scriptDir, "README.md");
 
-    await fs.mkdir(scriptDir, { recursive: true });
-
     const scriptContent = await this.fetchText(script.code_url);
-    await fs.writeFile(userJsPath, scriptContent, "utf8");
-
     const readmeContent = this.generateReadme(script, category);
-    await fs.writeFile(readmePath, readmeContent, "utf8");
 
-    console.log(`Synced: ${script.name} (${category})`);
+    const scriptChanged = await this.writeFileIfChanged(
+      userJsPath,
+      scriptContent
+    );
+    const readmeChanged = await this.writeFileIfChanged(
+      readmePath,
+      readmeContent
+    );
+
+    if (scriptChanged || readmeChanged) {
+      console.log(`Updated: ${script.name} (${category})`);
+      this.hasChanges = true;
+    }
 
     return {
       id: script.id,
@@ -114,6 +147,11 @@ Last updated: ${new Date(script.created_at).toLocaleDateString()}
   }
 
   async generateMainReadme(syncedScripts) {
+    if (!this.hasChanges) {
+      console.log("No script changes detected, skipping README update");
+      return;
+    }
+
     const categories = {};
 
     syncedScripts.forEach((script) => {
@@ -152,7 +190,14 @@ This repository contains all userscripts published by **${
 
     content += `\n---\n*Auto-generated from Greasyfork API*\n`;
 
-    await fs.writeFile(path.join(CONFIG.baseDir, "README.md"), content, "utf8");
+    const readmeChanged = await this.writeFileIfChanged(
+      path.join(CONFIG.baseDir, "README.md"),
+      content
+    );
+
+    if (readmeChanged) {
+      console.log("Main README updated due to script changes");
+    }
   }
 
   async run() {
@@ -175,7 +220,7 @@ This repository contains all userscripts published by **${
 
       await this.generateMainReadme(syncedScripts);
 
-      console.log("Sync complete");
+      console.log(`Sync complete. Changes detected: ${this.hasChanges}`);
     } catch (error) {
       console.error("Sync failed:", error);
       process.exit(1);
