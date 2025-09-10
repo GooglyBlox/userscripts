@@ -2,14 +2,15 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 23
-**Last Updated:** 9/9/2025, 1:41:46 AM
+**Total Scripts:** 25
+**Last Updated:** 9/10/2025, 1:47:13 AM
 
 ## Categories
 
 
-### Comick (16)
+### Comick (17)
 
+- [Comick 2+ Chapter Timer Fix](./scripts/Comick/comick-2-chapter-timer-fix/comick-2-chapter-timer-fix.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/548974))
 - [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/546538))
 - [Comick Auto Follow on Read](./scripts/Comick/comick-auto-follow-on-read/comick-auto-follow-on-read.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/548074))
 - [Comick Chapter Timer](./scripts/Comick/comick-chapter-timer/comick-chapter-timer.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/545352))
@@ -19,7 +20,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick MangaUpdates Import](./scripts/Comick/comick-mangaupdates-import/comick-mangaupdates-import.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/545346))
 - [Comick Random Comic](./scripts/Comick/comick-random-comic/comick-random-comic.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/542278))
-- [Comick.io Comment Counter](./scripts/Comick/comick-io-comment-counter/comick-io-comment-counter.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/538153))
+- [Comick.io Comment Counter](./scripts/Comick/comick-io-comment-counter/comick-io-comment-counter.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/538153))
 - [Comick.io Comment Image Minimizer](./scripts/Comick/comick-io-comment-image-minimizer/comick-io-comment-image-minimizer.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/540889))
 - [Comick.io Native Zoom Control](./scripts/Comick/comick-io-native-zoom-control/comick-io-native-zoom-control.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/545969))
 - [Comick.io Random Comic Button](./scripts/Comick/comick-io-random-comic-button/comick-io-random-comic-button.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/532268))
@@ -42,8 +43,9 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/499882))
 
-### Roblox (1)
+### Roblox (2)
 
+- [Roblox Button Recolor](./scripts/Roblox/roblox-button-recolor/roblox-button-recolor.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/548976))
 - [Roblox Friends Banned Account Name Revealer](./scripts/Roblox/roblox-friends-banned-account-name-revealer/roblox-friends-banned-account-name-revealer.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/548885))
 
 ---

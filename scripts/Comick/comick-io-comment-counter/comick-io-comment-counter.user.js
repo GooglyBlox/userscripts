@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick.io Comment Counter
 // @namespace    https://github.com/GooglyBlox
-// @version      1.1
+// @version      1.2
 // @description  Displays a counter for comments on comic pages
 // @author       GooglyBlox
-// @match        https://comick.io/comic/*/*
+// @match        https://comick.io/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/538153/Comickio%20Comment%20Counter.user.js
