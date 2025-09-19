@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 25
-**Last Updated:** 9/10/2025, 1:47:13 AM
+**Total Scripts:** 26
+**Last Updated:** 9/19/2025, 2:02:36 AM
 
 ## Categories
 
@@ -37,9 +37,10 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 
-### Misc (3)
+### Misc (4)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
+- [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550006))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/499882))
 
