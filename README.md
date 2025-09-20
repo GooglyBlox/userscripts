@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 27
-**Last Updated:** 9/19/2025, 6:43:20 AM
+**Total Scripts:** 28
+**Last Updated:** 9/20/2025, 6:40:27 AM
 
 ## Categories
 
@@ -37,13 +37,14 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 
-### Misc (5)
+### Misc (6)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550006))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
+- [YouTube Redirect Resolver](./scripts/Misc/youtube-redirect-resolver/youtube-redirect-resolver.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550119))
 
 ### Roblox (2)
 
