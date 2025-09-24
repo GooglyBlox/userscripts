@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick Dark Mode Enhancer
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
-// @description  Simplifies the dark mode on Comick.io
+// @version      1.1
+// @description  Simplifies the dark mode on Comick.dev
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/539869/Comick%20Dark%20Mode%20Enhancer.user.js

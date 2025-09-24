@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick Anime Planet Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Import comics from Anime Planet JSON export
 // @author       GooglyBlox
-// @match        https://comick.io/import
+// @match        https://comick.dev/import
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/546538/Comick%20Anime%20Planet%20Import.user.js
@@ -15,8 +15,8 @@
     'use strict';
 
     const API_ENDPOINTS = {
-        search: 'https://api.comick.fun/v1.0/search/',
-        follow: 'https://api.comick.io/follow'
+        search: 'https://api.comick.dev/v1.0/search/',
+        follow: 'https://api.comick.dev/follow'
     };
 
     const READING_LISTS = {

@@ -1,15 +1,15 @@
 // ==UserScript==
 // @name         Comick Mention Notifier
 // @namespace    https://github.com/GooglyBlox
-// @version      1.1
+// @version      1.2
 // @description  Shows notifications when someone mentions you in Comick comments
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        GM_xmlhttpRequest
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @connect      auth.comick.io
-// @connect      api.comick.io
+// @connect      auth.comick.dev
+// @connect      api.comick.dev
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/545346/Comick%20Mention%20Notifier.user.js
 // @updateURL https://update.greasyfork.org/scripts/545346/Comick%20Mention%20Notifier.meta.js
@@ -65,7 +65,7 @@
 
     async function fetchUsername(userId) {
         try {
-            const response = await makeRequest('https://auth.comick.io/sessions/whoami');
+            const response = await makeRequest('https://auth.comick.dev/sessions/whoami');
             const username = response?.identity?.traits?.username;
             if (username) {
                 return username;
@@ -108,7 +108,7 @@
 
     async function fetchUserComments(userId, page = 1) {
         try {
-            const response = await makeRequest(`https://api.comick.io/user/${userId}/comments?page=${page}`);
+            const response = await makeRequest(`https://api.comick.dev/user/${userId}/comments?page=${page}`);
             return response || [];
         } catch (error) {
             return [];
@@ -123,7 +123,7 @@
             return null;
         }
 
-        return `https://comick.io/comic/${comic.slug}/${chapter.hid}-chapter-${chapter.chap}-${chapter.lang}#comment-${commentId}`;
+        return `https://comick.dev/comic/${comic.slug}/${chapter.hid}-chapter-${chapter.chap}-${chapter.lang}#comment-${commentId}`;
     }
 
     function removeMentionFromContent(content, username) {

@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick Chapter Timer
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Shows timer for next chapter when 2+ chapters are available
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/545352/Comick%20Chapter%20Timer.user.js
@@ -14,7 +14,7 @@
 (function () {
   'use strict';
 
-  const API_BASE = 'https://api.comick.fun';
+  const API_BASE = 'https://api.comick.dev';
   let currentURL = location.href;
   let pageObserver = null;
   let bodyObserver = null;

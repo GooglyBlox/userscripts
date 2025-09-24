@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick MangaUpdates Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.2
+// @version      1.3
 // @description  Import comics from MangaUpdates JSON export
 // @author       GooglyBlox
-// @match        https://comick.io/import
+// @match        https://comick.dev/import
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/544792/Comick%20MangaUpdates%20Import.user.js
@@ -15,8 +15,8 @@
     'use strict';
 
     const API_ENDPOINTS = {
-        search: 'https://api.comick.fun/v1.0/search/',
-        follow: 'https://api.comick.io/follow'
+        search: 'https://api.comick.dev/v1.0/search/',
+        follow: 'https://api.comick.dev/follow'
     };
 
     const READING_LISTS = {

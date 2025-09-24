@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick Comic Type Column
 // @namespace    https://github.com/GooglyBlox
-// @version      1.1
+// @version      1.2
 // @description  Adds a column showing comic type (Manga/Manhwa/Manhua) based on country
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/540804/Comick%20Comic%20Type%20Column.user.js
@@ -120,7 +120,7 @@
 
   async function fetchUserFollows(userId) {
     try {
-      const res = await fetch(`https://api.comick.io/user/${userId}/follows`)
+      const res = await fetch(`https://api.comick.dev/user/${userId}/follows`)
       if (!res.ok) throw new Error(res.status)
       return await res.json()
     } catch (e) {

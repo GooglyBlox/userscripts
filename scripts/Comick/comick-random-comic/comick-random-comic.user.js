@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick Random Comic
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Add a random comic button to your Comick reading list
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/542278/Comick%20Random%20Comic.user.js

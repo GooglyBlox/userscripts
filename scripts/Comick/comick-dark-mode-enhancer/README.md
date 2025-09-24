@@ -2,11 +2,11 @@
 
 **Author:** GooglyBlox
 **Category:** Comick
-**Version:** 1.0
+**Version:** 1.1
 **Greasyfork ID:** 539869
 
 ## Description
-Simplifies the dark mode on Comick.io
+Simplifies the dark mode on Comick.dev
 
 ## Links
 - [Greasyfork Page](https://greasyfork.org/scripts/539869)

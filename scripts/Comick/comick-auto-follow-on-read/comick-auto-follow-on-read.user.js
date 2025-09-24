@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Comick Auto Follow on Read
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Automatically add comics to reading list when reaching the end of a chapter
 // @author       GooglyBlox
-// @match        https://comick.io/*
-// @connect      api.comick.io
-// @connect      api.comick.fun
+// @match        https://comick.dev/*
+// @connect      api.comick.dev
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/548074/Comick%20Auto%20Follow%20on%20Read.user.js
@@ -17,9 +16,9 @@
     'use strict';
 
     const API_ENDPOINTS = {
-        comic: 'https://api.comick.fun/comic/',
-        follow: 'https://api.comick.io/follow',
-        whoami: 'https://api.comick.io/v1.0/sessions/whoami/get'
+        comic: 'https://api.comick.dev/comic/',
+        follow: 'https://api.comick.dev/follow',
+        whoami: 'https://api.comick.dev/v1.0/sessions/whoami/get'
     };
 
     const READING_LIST_ID = 1;

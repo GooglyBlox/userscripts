@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Comick List Date Viewer
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Click relative dates to show actual dates for Last Read, Updated, and Added columns.
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/541476/Comick%20List%20Date%20Viewer.user.js
@@ -26,7 +26,7 @@
 
     async function fetchUserFollows(userId) {
         try {
-            const res = await fetch(`https://api.comick.io/user/${userId}/follows`);
+            const res = await fetch(`https://api.comick.dev/user/${userId}/follows`);
             if (!res.ok) throw new Error(`HTTP ${res.status}`);
             return await res.json();
         } catch (e) {

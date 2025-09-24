@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Remove Comick Sidebar
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Removes sidebar div and extends main to take its place exactly
 // @author       GooglyBlox
-// @match        https://comick.io/
-// @match        https://comick.io/home2
+// @match        https://comick.dev/
+// @match        https://comick.dev/home2
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/534227/Remove%20Comick%20Sidebar.user.js

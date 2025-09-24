@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name         Convert Comick Sidebar to Rows
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Converts sidebar sections to rows.
 // @author       GooglyBlox
-// @match        https://comick.io/*
+// @match        https://comick.dev/*
 // @grant        none
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/543968/Convert%20Comick%20Sidebar%20to%20Rows.user.js
