@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 29
-**Last Updated:** 9/24/2025, 2:01:17 AM
+**Total Scripts:** 30
+**Last Updated:** 9/30/2025, 1:00:34 PM
 
 ## Categories
 
@@ -38,7 +38,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 
-### Misc (6)
+### Misc (7)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550006))
@@ -46,6 +46,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
 - [YouTube Redirect Resolver](./scripts/Misc/youtube-redirect-resolver/youtube-redirect-resolver.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550119))
+- [Zybooks Auto 2x Speed and Step Progression](./scripts/Misc/zybooks-auto-2x-speed-and-step-progression/zybooks-auto-2x-speed-and-step-progression.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551116))
 
 ### Roblox (2)
 
