@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 30
-**Last Updated:** 9/30/2025, 1:00:34 PM
+**Total Scripts:** 31
+**Last Updated:** 10/1/2025, 6:44:24 AM
 
 ## Categories
 
@@ -38,12 +38,13 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 
-### Misc (7)
+### Misc (8)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550006))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/499882))
+- [Vercel Env Vars Export](./scripts/Misc/vercel-env-vars-export/vercel-env-vars-export.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551210))
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
 - [YouTube Redirect Resolver](./scripts/Misc/youtube-redirect-resolver/youtube-redirect-resolver.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550119))
 - [Zybooks Auto 2x Speed and Step Progression](./scripts/Misc/zybooks-auto-2x-speed-and-step-progression/zybooks-auto-2x-speed-and-step-progression.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551116))
