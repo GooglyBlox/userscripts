@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 31
-**Last Updated:** 10/1/2025, 6:44:24 AM
+**Last Updated:** 10/2/2025, 1:59:48 AM
 
 ## Categories
 
@@ -11,13 +11,13 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 ### Comick (18)
 
 - [Comick 2+ Chapter Timer Fix](./scripts/Comick/comick-2-chapter-timer-fix/comick-2-chapter-timer-fix.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548974))
-- [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/546538))
+- [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/546538))
 - [Comick Auto Follow on Read](./scripts/Comick/comick-auto-follow-on-read/comick-auto-follow-on-read.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548074))
 - [Comick Chapter Timer](./scripts/Comick/comick-chapter-timer/comick-chapter-timer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/545352))
 - [Comick Comic Type Column](./scripts/Comick/comick-comic-type-column/comick-comic-type-column.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/540804))
 - [Comick Dark Mode Enhancer](./scripts/Comick/comick-dark-mode-enhancer/comick-dark-mode-enhancer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/539869))
 - [Comick List Date Viewer](./scripts/Comick/comick-list-date-viewer/comick-list-date-viewer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/541476))
-- [Comick MangaUpdates Import](./scripts/Comick/comick-mangaupdates-import/comick-mangaupdates-import.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/544792))
+- [Comick MangaUpdates Import](./scripts/Comick/comick-mangaupdates-import/comick-mangaupdates-import.user.js) - v1.4 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))
 - [Comick Random Comic](./scripts/Comick/comick-random-comic/comick-random-comic.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/542278))
 - [Comick Tracking Site Banner Remover](./scripts/Comick/comick-tracking-site-banner-remover/comick-tracking-site-banner-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550488))

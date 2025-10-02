@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick Anime Planet Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.1
+// @version      1.2
 // @description  Import comics from Anime Planet JSON export
 // @author       GooglyBlox
 // @match        https://comick.dev/import
@@ -48,10 +48,10 @@
             return;
         }
 
-        const iconContainer = document.querySelector('.flex.items-center .bg-auto.bg-al');
-        if (!iconContainer) return;
+        const anilistIcon = document.querySelector('.bg-auto.bg-al');
+        if (!anilistIcon) return;
 
-        const existingAnimePlanetIcon = iconContainer.parentNode.querySelector('img[alt="Anime Planet"]');
+        const existingAnimePlanetIcon = anilistIcon.parentNode.querySelector('img[alt="Anime Planet"]');
         if (existingAnimePlanetIcon) {
             state.iconsAdded = true;
             return;
@@ -61,19 +61,19 @@
         animePlanetIcon.className = 'h-6 w-6 ml-2 rounded overflow-hidden';
         animePlanetIcon.innerHTML = '<img src="https://www.anime-planet.com/apple-touch-icon.png?v=WGowMEAKpM" class="h-full w-full object-cover" alt="Anime Planet">';
 
-        const mangaUpdatesIcon = iconContainer.parentNode.querySelector('img[alt="MangaUpdates"]');
+        const mangaUpdatesIcon = anilistIcon.parentNode.querySelector('img[alt="MangaUpdates"]');
         if (mangaUpdatesIcon) {
             mangaUpdatesIcon.parentNode.insertAdjacentElement('afterend', animePlanetIcon);
         } else {
-            iconContainer.parentNode.insertBefore(animePlanetIcon, iconContainer.nextSibling);
+            anilistIcon.insertAdjacentElement('afterend', animePlanetIcon);
         }
 
         state.iconsAdded = true;
     }
 
     function updateHeading() {
-        const heading = document.querySelector('h3');
-        if (!heading || !heading.textContent.includes('Import comics - manga from Myanimelist, Anilist')) return;
+        const heading = document.querySelector('h2');
+        if (!heading || !heading.textContent.includes('Import your list from Myanimelist, Anilist')) return;
 
         if (heading.textContent.includes('Anime Planet')) {
             state.headingUpdated = true;
@@ -85,7 +85,7 @@
             if (currentText.includes('MangaUpdates')) {
                 heading.textContent = currentText.replace('MangaUpdates', 'MangaUpdates, Anime Planet');
             } else {
-                heading.textContent = 'Import comics - manga from Myanimelist, Anilist, Anime Planet';
+                heading.textContent = 'Import your list from Myanimelist, Anilist, Anime Planet';
             }
         }
         state.headingUpdated = true;
@@ -144,9 +144,9 @@
         } else if (mangaUpdatesButton) {
             insertAfter = mangaUpdatesButton;
         } else {
-            const lastButtonContainer = importContainer.querySelector('.flex.items-center.mt-3:last-of-type');
-            if (!lastButtonContainer) return;
-            insertAfter = lastButtonContainer;
+            const buttonContainers = importContainer.querySelectorAll('.flex.items-center.mt-3');
+            if (buttonContainers.length === 0) return;
+            insertAfter = buttonContainers[buttonContainers.length - 1];
         }
 
         const animePlanetButton = createAnimePlanetButton();
@@ -394,7 +394,7 @@
 
     function checkElementsExist() {
         const iconExists = document.querySelector('img[alt="Anime Planet"]');
-        const headingExists = document.querySelector('h3')?.textContent.includes('Anime Planet');
+        const headingExists = document.querySelector('h2')?.textContent.includes('Anime Planet');
 
         if (!iconExists) {
             state.iconsAdded = false;
@@ -414,7 +414,7 @@
 
         const hasRequiredElements =
             document.querySelector('.xl\\:container') &&
-            document.querySelector('h1')?.textContent.includes('Import Your Comics');
+            document.querySelector('h1')?.textContent.includes('Import');
 
         if (hasRequiredElements) {
             checkElementsExist();

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick MangaUpdates Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.3
+// @version      1.4
 // @description  Import comics from MangaUpdates JSON export
 // @author       GooglyBlox
 // @match        https://comick.dev/import
@@ -40,10 +40,10 @@
             return;
         }
 
-        const iconContainer = document.querySelector('.flex.items-center .bg-auto.bg-al');
-        if (!iconContainer) return;
+        const anilistIcon = document.querySelector('.bg-auto.bg-al');
+        if (!anilistIcon) return;
 
-        const existingMangaUpdatesIcon = iconContainer.parentNode.querySelector('img[alt="MangaUpdates"]');
+        const existingMangaUpdatesIcon = anilistIcon.parentNode.querySelector('img[alt="MangaUpdates"]');
         if (existingMangaUpdatesIcon) {
             state.iconsAdded = true;
             return;
@@ -53,20 +53,20 @@
         mangaUpdatesIcon.className = 'h-6 w-6 ml-2 rounded overflow-hidden';
         mangaUpdatesIcon.innerHTML = '<img src="https://www.mangaupdates.com/images/manga-updates.svg" class="h-full w-full object-cover" alt="MangaUpdates">';
 
-        iconContainer.parentNode.insertBefore(mangaUpdatesIcon, iconContainer.nextSibling);
+        anilistIcon.insertAdjacentElement('afterend', mangaUpdatesIcon);
         state.iconsAdded = true;
     }
 
     function updateHeading() {
-        const heading = document.querySelector('h3');
-        if (!heading || !heading.textContent.includes('Import comics - manga from Myanimelist, Anilist')) return;
+        const heading = document.querySelector('h2');
+        if (!heading || !heading.textContent.includes('Import your list from Myanimelist, Anilist')) return;
 
         if (heading.textContent.includes('MangaUpdates')) {
             state.headingUpdated = true;
             return;
         }
 
-        heading.textContent = 'Import comics - manga from Myanimelist, Anilist, MangaUpdates';
+        heading.textContent = 'Import your list from Myanimelist, Anilist, MangaUpdates';
         state.headingUpdated = true;
     }
 
@@ -135,8 +135,10 @@
         const importContainer = document.querySelector('.xl\\:container');
         if (!importContainer) return;
 
-        const lastButtonContainer = importContainer.querySelector('.flex.items-center.mt-3:last-of-type');
-        if (!lastButtonContainer) return;
+        const buttonContainers = importContainer.querySelectorAll('.flex.items-center.mt-3');
+        if (buttonContainers.length === 0) return;
+
+        const lastButtonContainer = buttonContainers[buttonContainers.length - 1];
 
         const mangaUpdatesButton = createMangaUpdatesButton();
         const progressSection = createProgressSection();
@@ -370,7 +372,7 @@
 
     function checkElementsExist() {
         const iconExists = document.querySelector('img[alt="MangaUpdates"]');
-        const headingExists = document.querySelector('h3')?.textContent.includes('MangaUpdates');
+        const headingExists = document.querySelector('h2')?.textContent.includes('MangaUpdates');
 
         if (!iconExists) {
             state.iconsAdded = false;
@@ -390,7 +392,7 @@
 
         const hasRequiredElements =
             document.querySelector('.xl\\:container') &&
-            document.querySelector('h1')?.textContent.includes('Import Your Comics');
+            document.querySelector('h1')?.textContent.includes('Import');
 
         if (hasRequiredElements) {
             checkElementsExist();
