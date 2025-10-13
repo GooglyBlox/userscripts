@@ -58,6 +58,7 @@ class GreasyforkSync {
       return "Instagram";
     if (matches.includes("comick") || name.includes("comick")) return "Comick";
     if (matches.includes("roblox") || name.includes("roblox")) return "Roblox";
+    if (matches.includes("zybooks") || name.includes("zybooks")) return "zyBooks";
     return "Misc";
   }
 
