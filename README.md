@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 31
-**Last Updated:** 10/9/2025, 1:00:00 PM
+**Total Scripts:** 32
+**Last Updated:** 10/14/2025, 6:56:38 PM
 
 ## Categories
 
@@ -38,7 +38,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 
-### Misc (8)
+### Misc (7)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550006))
@@ -52,6 +52,11 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Roblox Button Recolor](./scripts/Roblox/roblox-button-recolor/roblox-button-recolor.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/548976))
 - [Roblox Friends Banned Account Name Revealer](./scripts/Roblox/roblox-friends-banned-account-name-revealer/roblox-friends-banned-account-name-revealer.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/548885))
+
+### zyBooks (2)
+
+- [zybooks Auto 2x Speed and Step Progression](./scripts/zyBooks/zybooks-auto-2x-speed-and-step-progression/zybooks-auto-2x-speed-and-step-progression.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/551116))
+- [zyBooks Auto Show Answers](./scripts/zyBooks/zybooks-auto-show-answers/zybooks-auto-show-answers.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/552590))
 
 ---
 *Auto-generated from Greasyfork API*
