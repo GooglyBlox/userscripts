@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         zybooks Auto 2x Speed and Step Progression
+// @name         zyBooks Auto 2x Speed and Step Progression
 // @namespace    https://github.com/GooglyBlox
-// @version      1.1
-// @description  Automatically enables 2x speed and clicks the next available step on all zybooks animations
+// @version      1.2
+// @description  Automatically enables 2x speed and clicks the next available step on all zyBooks animations
 // @author       GooglyBlox
 // @match        https://learn.zybooks.com/zybook/*
 // @grant        none
 // @license      MIT
-// @downloadURL https://update.greasyfork.org/scripts/551116/zybooks%20Auto%202x%20Speed%20and%20Step%20Progression.user.js
-// @updateURL https://update.greasyfork.org/scripts/551116/zybooks%20Auto%202x%20Speed%20and%20Step%20Progression.meta.js
+// @downloadURL https://update.greasyfork.org/scripts/551116/zyBooks%20Auto%202x%20Speed%20and%20Step%20Progression.user.js
+// @updateURL https://update.greasyfork.org/scripts/551116/zyBooks%20Auto%202x%20Speed%20and%20Step%20Progression.meta.js
 // ==/UserScript==
 
 (function() {

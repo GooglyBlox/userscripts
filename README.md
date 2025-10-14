@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 32
-**Last Updated:** 10/14/2025, 6:56:38 PM
+**Last Updated:** 10/14/2025, 11:15:07 PM
 
 ## Categories
 
@@ -55,7 +55,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 ### zyBooks (2)
 
-- [zybooks Auto 2x Speed and Step Progression](./scripts/zyBooks/zybooks-auto-2x-speed-and-step-progression/zybooks-auto-2x-speed-and-step-progression.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/551116))
+- [zyBooks Auto 2x Speed and Step Progression](./scripts/zyBooks/zybooks-auto-2x-speed-and-step-progression/zybooks-auto-2x-speed-and-step-progression.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/551116))
 - [zyBooks Auto Show Answers](./scripts/zyBooks/zybooks-auto-show-answers/zybooks-auto-show-answers.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/552590))
 
 ---
