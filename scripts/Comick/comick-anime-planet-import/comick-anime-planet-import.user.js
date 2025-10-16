@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick Anime Planet Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.2
+// @version      1.3
 // @description  Import comics from Anime Planet JSON export
 // @author       GooglyBlox
 // @match        https://comick.dev/import
@@ -39,7 +39,6 @@
         observer: null,
         buttonAdded: false,
         iconsAdded: false,
-        headingUpdated: false,
         isProcessing: false
     };
 
@@ -48,10 +47,10 @@
             return;
         }
 
-        const anilistIcon = document.querySelector('.bg-auto.bg-al');
-        if (!anilistIcon) return;
+        const iconContainer = document.querySelector('.flex.items-center .bg-auto.bg-al');
+        if (!iconContainer) return;
 
-        const existingAnimePlanetIcon = anilistIcon.parentNode.querySelector('img[alt="Anime Planet"]');
+        const existingAnimePlanetIcon = iconContainer.parentNode.querySelector('img[alt="Anime Planet"]');
         if (existingAnimePlanetIcon) {
             state.iconsAdded = true;
             return;
@@ -61,66 +60,56 @@
         animePlanetIcon.className = 'h-6 w-6 ml-2 rounded overflow-hidden';
         animePlanetIcon.innerHTML = '<img src="https://www.anime-planet.com/apple-touch-icon.png?v=WGowMEAKpM" class="h-full w-full object-cover" alt="Anime Planet">';
 
-        const mangaUpdatesIcon = anilistIcon.parentNode.querySelector('img[alt="MangaUpdates"]');
-        if (mangaUpdatesIcon) {
-            mangaUpdatesIcon.parentNode.insertAdjacentElement('afterend', animePlanetIcon);
+        const lastIcon = iconContainer.parentNode.querySelector('.h-6.w-y.ml-2.rounded');
+        if (lastIcon) {
+            lastIcon.insertAdjacentElement('afterend', animePlanetIcon);
         } else {
-            anilistIcon.insertAdjacentElement('afterend', animePlanetIcon);
+            const muIcon = iconContainer.parentNode.querySelector('.bg-auto.bg-mu');
+            if (muIcon) {
+                muIcon.insertAdjacentElement('afterend', animePlanetIcon);
+            } else {
+                iconContainer.insertAdjacentElement('afterend', animePlanetIcon);
+            }
         }
 
         state.iconsAdded = true;
     }
 
-    function updateHeading() {
-        const heading = document.querySelector('h2');
-        if (!heading || !heading.textContent.includes('Import your list from Myanimelist, Anilist')) return;
-
-        if (heading.textContent.includes('Anime Planet')) {
-            state.headingUpdated = true;
-            return;
-        }
-
-        let currentText = heading.textContent;
-        if (!currentText.includes('Anime Planet')) {
-            if (currentText.includes('MangaUpdates')) {
-                heading.textContent = currentText.replace('MangaUpdates', 'MangaUpdates, Anime Planet');
-            } else {
-                heading.textContent = 'Import your list from Myanimelist, Anilist, Anime Planet';
-            }
-        }
-        state.headingUpdated = true;
-    }
-
-    function createAnimePlanetButton() {
-        const container = document.createElement('div');
-        container.className = 'flex items-center mt-3';
-
-        container.innerHTML = `
-            <button id="animeplanet-import-btn" class="btn flex w-44 justify-start">
-                <img src="https://www.anime-planet.com/apple-touch-icon.png?v=WGowMEAKpM" class="h-6 w-6 mx-2 rounded" alt="Anime Planet">
-                <div>Anime Planet</div>
-            </button>
-            <input type="file" id="animeplanet-file-input" accept=".json" style="display: none;">
-        `;
-
-        return container;
-    }
-
-    function createProgressSection() {
+    function createAnimePlanetSection() {
         const section = document.createElement('div');
-        section.id = 'animeplanet-progress-section';
-        section.className = 'mt-4 hidden';
+        section.className = 'bg-gray-100 dark:bg-gray-700 p-3';
+        section.id = 'animeplanet-import-section';
 
         section.innerHTML = `
-            <div class="p-4 bg-gray-800 rounded-lg border border-gray-600">
-                <div class="flex justify-between text-sm text-gray-300 mb-2">
-                    <span id="animeplanet-progress-text">Processing Anime Planet import...</span>
-                    <span id="animeplanet-progress-count">0/0</span>
+            <div class="flex items-center">
+                <button id="animeplanet-import-btn" class="btn flex justify-start flex-none w-48 cursor-default">
+                    <img src="https://www.anime-planet.com/apple-touch-icon.png?v=WGowMEAKpM" class="h-6 w-y ml-2 rounded">
+                    <div class="ml-2">Anime Planet</div>
+                </button>
+            </div>
+            <div class="text-sm">Upload exported file from Anime Planet</div>
+            <div class="">
+                <div class="flex items-center">
+                    <div class="items-center">
+                        <input type="file" id="animeplanet-file-input" accept=".json" class="block text-sm file:mr-4 file:py-2 my-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:hover:cursor-pointer file:active:border-none">
+                        <div class="flex space-x-3 items-center">
+                            <div class="text-sm italic">Choose the .json file</div>
+                        </div>
+                    </div>
+                    <button id="animeplanet-import-trigger" class="btn ml-3" color="default">Import</button>
                 </div>
-                <div class="w-full bg-gray-700 rounded-full h-2">
-                    <div id="animeplanet-progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+            </div>
+            <div id="animeplanet-progress-section" class="mt-4 hidden">
+                <div class="p-4 bg-gray-800 rounded-lg border border-gray-600">
+                    <div class="flex justify-between text-sm text-gray-300 mb-2">
+                        <span id="animeplanet-progress-text">Processing Anime Planet import...</span>
+                        <span id="animeplanet-progress-count">0/0</span>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                        <div id="animeplanet-progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+                    </div>
+                    <div id="animeplanet-results" class="mt-4 max-h-64 overflow-y-auto"></div>
                 </div>
-                <div id="animeplanet-results" class="mt-4 max-h-64 overflow-y-auto"></div>
             </div>
         `;
 
@@ -128,66 +117,50 @@
     }
 
     function addAnimePlanetButton() {
-        if (state.buttonAdded || document.getElementById('animeplanet-import-btn')) {
+        if (state.buttonAdded || document.getElementById('animeplanet-import-section')) {
             return;
         }
 
-        const importContainer = document.querySelector('.xl\\:container');
-        if (!importContainer) return;
+        const gridContainer = document.querySelector('.divide-y-2.dark\\:divide-gray-700.divide-gray-100.space-y-5.grid.grid-cols-1');
+        if (!gridContainer) return;
 
-        const mangaUpdatesButton = document.getElementById('mangaupdates-import-btn')?.closest('.flex.items-center.mt-3');
-        const mangaUpdatesProgress = document.getElementById('mangaupdates-progress-section');
-
-        let insertAfter;
-        if (mangaUpdatesProgress) {
-            insertAfter = mangaUpdatesProgress;
-        } else if (mangaUpdatesButton) {
-            insertAfter = mangaUpdatesButton;
-        } else {
-            const buttonContainers = importContainer.querySelectorAll('.flex.items-center.mt-3');
-            if (buttonContainers.length === 0) return;
-            insertAfter = buttonContainers[buttonContainers.length - 1];
-        }
-
-        const animePlanetButton = createAnimePlanetButton();
-        const progressSection = createProgressSection();
-
-        insertAfter.insertAdjacentElement('afterend', animePlanetButton);
-        animePlanetButton.insertAdjacentElement('afterend', progressSection);
+        const animePlanetSection = createAnimePlanetSection();
+        gridContainer.appendChild(animePlanetSection);
 
         state.buttonAdded = true;
         setupEventListeners();
     }
 
     function setupEventListeners() {
-        const importBtn = document.getElementById('animeplanet-import-btn');
         const fileInput = document.getElementById('animeplanet-file-input');
+        const importTrigger = document.getElementById('animeplanet-import-trigger');
 
-        if (!importBtn || !fileInput) return;
+        if (!fileInput || !importTrigger) return;
 
-        importBtn.addEventListener('click', () => {
-            if (!state.isProcessing) {
-                fileInput.click();
+        importTrigger.addEventListener('click', async () => {
+            const file = fileInput.files[0];
+            if (file && !state.isProcessing) {
+                await processAnimePlanetFile(file);
+                fileInput.value = '';
             }
         });
 
-        fileInput.addEventListener('change', async (e) => {
-            const file = e.target.files[0];
-            if (file && !state.isProcessing) {
-                await processAnimePlanetFile(file);
-                e.target.value = '';
+        fileInput.addEventListener('change', () => {
+            const importTrigger = document.getElementById('animeplanet-import-trigger');
+            if (fileInput.files[0] && importTrigger) {
+                importTrigger.disabled = false;
             }
         });
     }
 
     async function processAnimePlanetFile(file) {
         state.isProcessing = true;
-        const importBtn = document.getElementById('animeplanet-import-btn');
+        const importTrigger = document.getElementById('animeplanet-import-trigger');
         const progressSection = document.getElementById('animeplanet-progress-section');
-        const originalBtnContent = importBtn.innerHTML;
+        const originalBtnContent = importTrigger.textContent;
 
-        importBtn.textContent = 'Processing...';
-        importBtn.disabled = true;
+        importTrigger.textContent = 'Processing...';
+        importTrigger.disabled = true;
         progressSection.classList.remove('hidden');
 
         try {
@@ -205,8 +178,8 @@
             showError(`Error processing Anime Planet file: ${error.message}`);
         } finally {
             state.isProcessing = false;
-            importBtn.disabled = false;
-            importBtn.innerHTML = originalBtnContent;
+            importTrigger.disabled = false;
+            importTrigger.textContent = originalBtnContent;
         }
     }
 
@@ -394,13 +367,9 @@
 
     function checkElementsExist() {
         const iconExists = document.querySelector('img[alt="Anime Planet"]');
-        const headingExists = document.querySelector('h2')?.textContent.includes('Anime Planet');
 
         if (!iconExists) {
             state.iconsAdded = false;
-        }
-        if (!headingExists) {
-            state.headingUpdated = false;
         }
     }
 
@@ -419,7 +388,6 @@
         if (hasRequiredElements) {
             checkElementsExist();
             addAnimePlanetIcon();
-            updateHeading();
 
             if (!state.buttonAdded) {
                 setTimeout(addAnimePlanetButton, 100);
@@ -430,13 +398,11 @@
     function cleanupElements() {
         state.buttonAdded = false;
         state.iconsAdded = false;
-        state.headingUpdated = false;
 
-        const animePlanetButton = document.getElementById('animeplanet-import-btn')?.closest('.flex');
-        const animePlanetProgress = document.getElementById('animeplanet-progress-section');
+        const animePlanetSection = document.getElementById('animeplanet-import-section');
         const animePlanetIcon = document.querySelector('img[alt="Anime Planet"]')?.closest('.h-6.w-6.ml-2.rounded.overflow-hidden');
 
-        [animePlanetButton, animePlanetProgress, animePlanetIcon].forEach(el => el?.remove());
+        [animePlanetSection, animePlanetIcon].forEach(el => el?.remove());
     }
 
     function startObserver() {
@@ -461,7 +427,6 @@
         window.addEventListener('popstate', () => {
             state.buttonAdded = false;
             state.iconsAdded = false;
-            state.headingUpdated = false;
             setTimeout(checkAndAddButton, 200);
         });
     }
