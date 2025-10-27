@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         Roblox Friends Banned Account Name Revealer
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.2
 // @description  Shows real display name and username for banned accounts on friends page
 // @author       GooglyBlox
+// @match        https://www.roblox.com/users/*/friends*
 // @match        https://www.roblox.com/users/friends*
 // @grant        none
 // @license      MIT
