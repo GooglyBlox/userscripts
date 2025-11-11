@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick Source Linker
 // @namespace    http://github.com/GooglyBlox
-// @version      1.2
+// @version      1.3
 // @description  Link Comick chapters to alternative sources
 // @author       GooglyBlox
 // @match        https://comick.dev/*
@@ -449,14 +449,31 @@
     if (storedSources && storedSources.length > 0) {
       await addChapterIcons(comicInfo.comicId, storedSources);
 
-      const chapterTable = document.querySelector("tbody");
+      const chapterTable = document.querySelector("table.table-fixed tbody");
       if (chapterTable) {
         if (window.chapterListObserver) {
           window.chapterListObserver.disconnect();
         }
 
-        window.chapterListObserver = new MutationObserver(() => {
-          addChapterIcons(comicInfo.comicId, storedSources);
+        let isUpdating = false;
+
+        window.chapterListObserver = new MutationObserver((mutations) => {
+          if (isUpdating) return;
+
+          const hasNonAggregateChanges = mutations.some(mutation => {
+            return Array.from(mutation.addedNodes).some(node =>
+              node.nodeType === 1 && !node.classList.contains('aggregate-chapter-row')
+            ) || Array.from(mutation.removedNodes).some(node =>
+              node.nodeType === 1 && !node.classList.contains('aggregate-chapter-row')
+            );
+          });
+
+          if (hasNonAggregateChanges) {
+            isUpdating = true;
+            addChapterIcons(comicInfo.comicId, storedSources).finally(() => {
+              isUpdating = false;
+            });
+          }
         });
 
         window.chapterListObserver.observe(chapterTable, {
@@ -465,6 +482,72 @@
         });
       }
     }
+  };
+
+  const createAggregateChapterRow = (chapterNum, sourcesWithChapter) => {
+    const firstSource = sourcesWithChapter[0];
+    const lastUpdated = firstSource.chapter.lastUpdated || "Unknown";
+
+    const iconsHtml = sourcesWithChapter
+      .map(({ source, chapter }) => {
+        const sourceInfo = getSourceInfo(source);
+        const faviconUrl = sourceInfo ? getFaviconUrl(sourceInfo.baseUrl) : null;
+
+        if (faviconUrl) {
+          return `
+            <a href="${chapter.url}" target="_blank"
+              class="inline-block w-5 h-5 ml-1 hover:opacity-75"
+              title="${source} - Ch. ${chapter.number}">
+              <img src="${faviconUrl}" alt="${source}" class="w-full h-full rounded" />
+            </a>
+          `;
+        } else {
+          return `
+            <a href="${chapter.url}" target="_blank"
+              class="inline-block w-5 h-5 rounded-full bg-blue-500 text-white text-xs leading-5 text-center ml-1 hover:bg-blue-600"
+              title="${source} - Ch. ${chapter.number}">
+              ${source.charAt(0).toUpperCase()}
+            </a>
+          `;
+        }
+      })
+      .join("");
+
+    const tr = document.createElement("tr");
+    tr.className = "group border-t dark:border-gray-600 border-gray-300 aggregate-chapter-row";
+    tr.style.backgroundColor = "rgba(59, 130, 246, 0.05)";
+
+    tr.innerHTML = `
+      <td class="customclass1 left-0 break-all cursor-pointer flex items-center justify-between group">
+        <div class="py-3 w-full link-effect-no-ring dark:visited:text-gray-500 visited:text-gray-400 text-black dark:text-gray-200 flex items-center justify-between active:bg-blue-500/30 hover:bg-gray-100 dark:hover:bg-gray-700">
+          <div class="truncate">
+            <i class="fi mr-2 fi-gb rounded"></i><span class="font-bold" title="Chapter ${chapterNum}">Ch. ${chapterNum}</span><span class="source-icons ml-2">${iconsHtml}</span>
+          </div>
+        </div>
+      </td>
+      <td class="text-gray-600 text-right dark:text-gray-400 text-xs md:text-sm lg:text-base">
+        <time class="cursor-pointer">${lastUpdated}</time>
+      </td>
+      <td class="pl-3 xl:pl-8 text-right text-gray-600 dark:text-gray-400 text-xs md:text-sm lg:text-base flex items-center justify-between">
+        <div class="flex">
+          <div class="w-32 md:w-40 lg:w-48 xl:w-56 text-left truncate">
+            <span class="text-gray-500 dark:text-gray-500">Aggregate Source</span>
+          </div>
+          <div></div>
+        </div>
+        <div></div>
+      </td>
+    `;
+
+    return tr;
+  };
+
+  const isOnFirstPage = () => {
+    const currentPageLink = document.querySelector('nav[aria-label="pagination"] a[aria-current="page"]');
+    if (!currentPageLink) return true;
+
+    const pageText = currentPageLink.textContent.trim();
+    return pageText === "1";
   };
 
   const addChapterIcons = async (comicId, sources) => {
@@ -482,7 +565,60 @@
       }
     }
 
-    const chapterRows = document.querySelectorAll("tbody tr");
+    const chapterRows = document.querySelectorAll("table.table-fixed tbody tr:not(.aggregate-chapter-row)");
+    const existingChapterNumbers = new Set();
+
+    chapterRows.forEach((row) => {
+      const chapterNum = extractChapterNumber(row);
+      if (chapterNum !== null) {
+        existingChapterNumbers.add(chapterNum);
+      }
+    });
+
+    const tbody = document.querySelector("table.table-fixed tbody");
+
+    if (isOnFirstPage()) {
+      const highestComickChapter = existingChapterNumbers.size > 0
+        ? Math.max(...Array.from(existingChapterNumbers))
+        : 0;
+
+      const newChaptersMap = new Map();
+
+      for (const [sourceName, chapters] of Object.entries(sourceChapters)) {
+        for (const chapter of chapters) {
+          if (chapter.number > highestComickChapter && !existingChapterNumbers.has(chapter.number)) {
+            if (!newChaptersMap.has(chapter.number)) {
+              newChaptersMap.set(chapter.number, []);
+            }
+            newChaptersMap.get(chapter.number).push({
+              source: sourceName,
+              chapter: chapter,
+            });
+          }
+        }
+      }
+
+      if (tbody) {
+        tbody.querySelectorAll(".aggregate-chapter-row").forEach(row => row.remove());
+
+        const sortedNewChapters = Array.from(newChaptersMap.entries()).sort((a, b) => b[0] - a[0]);
+
+        const firstChapterRow = tbody.querySelector("tr:not(.aggregate-chapter-row)");
+
+        for (const [chapterNum, sourcesWithChapter] of sortedNewChapters) {
+          const newRow = createAggregateChapterRow(chapterNum, sourcesWithChapter);
+          if (firstChapterRow) {
+            tbody.insertBefore(newRow, firstChapterRow);
+          } else {
+            tbody.appendChild(newRow);
+          }
+        }
+      }
+    } else {
+      if (tbody) {
+        tbody.querySelectorAll(".aggregate-chapter-row").forEach(row => row.remove());
+      }
+    }
 
     chapterRows.forEach((row) => {
       const chapterNum = extractChapterNumber(row);
