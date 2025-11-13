@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 34
-**Last Updated:** 11/13/2025, 2:18:21 AM
+**Last Updated:** 11/13/2025, 6:46:28 AM
 
 ## Categories
 
@@ -21,7 +21,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick MangaUpdates Import (DEPRECATED)](./scripts/Comick/comick-mangaupdates-import-deprecated/comick-mangaupdates-import-deprecated.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))
 - [Comick Random Comic](./scripts/Comick/comick-random-comic/comick-random-comic.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/542278))
-- [Comick Source Linker](./scripts/Comick/comick-source-linker/comick-source-linker.user.js) - v1.4 ([Greasyfork](https://greasyfork.org/scripts/555280))
+- [Comick Source Linker](./scripts/Comick/comick-source-linker/comick-source-linker.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/555280))
 - [Comick Tracking Site Banner Remover](./scripts/Comick/comick-tracking-site-banner-remover/comick-tracking-site-banner-remover.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550488))
 - [Comick.dev Comment Counter](./scripts/Comick/comick-dev-comment-counter/comick-dev-comment-counter.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/538153))
 - [Comick.dev Comment Image Minimizer](./scripts/Comick/comick-dev-comment-image-minimizer/comick-dev-comment-image-minimizer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/540889))

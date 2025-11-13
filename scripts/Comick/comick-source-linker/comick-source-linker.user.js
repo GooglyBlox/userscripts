@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick Source Linker
 // @namespace    http://github.com/GooglyBlox
-// @version      1.4
+// @version      1.5
 // @description  Link Comick chapters to alternative sources
 // @author       GooglyBlox
 // @match        https://comick.dev/*
@@ -9,6 +9,7 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @connect      localhost
+// @connect      comick-source-api.notaspider.dev
 // @run-at       document-idle
 // @license      MIT
 // @downloadURL https://update.greasyfork.org/scripts/555280/Comick%20Source%20Linker.user.js
