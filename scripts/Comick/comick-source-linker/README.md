@@ -2,7 +2,7 @@
 
 **Author:** GooglyBlox
 **Category:** Comick
-**Version:** 1.3
+**Version:** 1.4
 **Greasyfork ID:** 555280
 
 ## Description

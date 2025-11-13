@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick Source Linker
 // @namespace    http://github.com/GooglyBlox
-// @version      1.3
+// @version      1.4
 // @description  Link Comick chapters to alternative sources
 // @author       GooglyBlox
 // @match        https://comick.dev/*
@@ -18,21 +18,41 @@
 (function () {
   "use strict";
 
-  // Configuration
   const API_BASE_URL = "https://comick-source-api.notaspider.dev";
   const STORAGE_KEY_PREFIX = "comick_sources_";
+  const SETTINGS_STORAGE_KEY = "comick_source_linker_settings";
 
   let sourcesCache = null;
-  // Cache for chapter lists: { comicId_sourceName: { chapters: [], timestamp: Date } }
   const chapterListCache = {};
-  const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+  const CACHE_DURATION = 5 * 60 * 1000;
 
   const error = (...args) => console.error("[Comick Source Linker]", ...args);
+
+  const getSettings = () => {
+    try {
+      const data = GM_getValue(SETTINGS_STORAGE_KEY);
+      if (data) {
+        return JSON.parse(data);
+      }
+    } catch (err) {
+      error("Failed to get settings:", err);
+    }
+    return { enabledSources: {} };
+  };
+
+  const saveSettings = (settings) => {
+    try {
+      GM_setValue(SETTINGS_STORAGE_KEY, JSON.stringify(settings));
+    } catch (err) {
+      error("Failed to save settings:", err);
+    }
+  };
 
   const getCachedChapters = async (url, source, comicId) => {
     const cacheKey = `${comicId}_${source}`;
     const cached = chapterListCache[cacheKey];
 
+    // Avoid hammering the API for chapter lists we've already fetched
     if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
       return cached.chapters;
     }
@@ -46,7 +66,6 @@
     return result.chapters;
   };
 
-  // Get favicon URL for a source
   const getFaviconUrl = (baseUrl) => {
     try {
       const url = new URL(baseUrl);
@@ -56,7 +75,6 @@
     }
   };
 
-  // Create loading spinner HTML
   const createLoadingSpinner = (size = "w-5 h-5") => {
     return `
           <svg class="animate-spin ${size} text-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
@@ -66,7 +84,6 @@
         `;
   };
 
-  // Set button loading state
   const setButtonLoading = (button, isLoading, loadingText = "") => {
     if (isLoading) {
       button.disabled = true;
@@ -84,13 +101,11 @@
     }
   };
 
-  // Get source info by name
   const getSourceInfo = (sourceName) => {
     if (!sourcesCache) return null;
     return sourcesCache.sources.find((s) => s.name === sourceName);
   };
 
-  // Storage utilities
   const getStoredSources = (comicId) => {
     try {
       const data = GM_getValue(STORAGE_KEY_PREFIX + comicId);
@@ -109,7 +124,6 @@
     }
   };
 
-  // API functions
   const apiRequest = (endpoint, method = "GET", data = null) => {
     return new Promise((resolve, reject) => {
       GM_xmlhttpRequest({
@@ -134,12 +148,11 @@
   };
 
   const getSources = () => apiRequest("/api/sources");
-  const searchSources = (query) =>
-    apiRequest("/api/search", "POST", { query, source: "all" });
+  const searchSources = (query, sources = "all") =>
+    apiRequest("/api/search", "POST", { query, source: sources });
   const getChapters = (url, source) =>
     apiRequest("/api/chapters", "POST", { url, source });
 
-  // Page detection
   const isComicPage = () => {
     const path = window.location.pathname;
     const parts = path.split("/").filter((p) => p);
@@ -152,7 +165,6 @@
     return parts.length === 3 && parts[0] === "comic";
   };
 
-  // Extract comic information
   const extractComicInfo = () => {
     const titleElement = document.querySelector("h1");
     const title = titleElement ? titleElement.textContent.trim() : null;
@@ -172,7 +184,6 @@
     return { title, aliases, comicId };
   };
 
-  // Extract chapter number from chapter list item
   const extractChapterNumber = (chapterElement) => {
     const titleElement = chapterElement.querySelector("span.font-bold");
     if (!titleElement) return null;
@@ -181,7 +192,6 @@
     return match ? parseFloat(match[1]) : null;
   };
 
-  // Extract current chapter info on chapter page
   const extractCurrentChapter = () => {
     const infoElement = document.querySelector(
       ".rounded-md.bg-gray-50.dark\\:bg-gray-900"
@@ -197,7 +207,6 @@
     return match ? parseFloat(match[1]) : null;
   };
 
-  // UI Creation
   const createSourceButton = () => {
     const button = document.createElement("button");
     button.type = "button";
@@ -217,50 +226,83 @@
     overlay.className = "fixed inset-0 z-50 overflow-y-auto";
     overlay.style.cssText = "background-color: rgba(0, 0, 0, 0.5);";
 
+    const settings = getSettings();
+    const availableSources = sourcesCache?.sources || [];
+
+    // First time setup: enable all sources by default
+    if (availableSources.length > 0 && Object.keys(settings.enabledSources).length === 0) {
+      availableSources.forEach(source => {
+        settings.enabledSources[source.name] = true;
+      });
+    }
+
+    const sourcesHtml = availableSources
+      .map(source => `
+        <label class="flex items-center gap-3 p-3 hover:bg-gray-50 dark:hover:bg-gray-700 rounded cursor-pointer border border-gray-200 dark:border-gray-600">
+          <input type="checkbox" class="source-toggle w-4 h-4" data-source="${source.name}" ${settings.enabledSources[source.name] !== false ? 'checked' : ''}>
+          <div class="flex-1">
+            <div class="font-medium text-gray-900 dark:text-gray-100">${source.name}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">${source.baseUrl}</div>
+          </div>
+        </label>
+      `)
+      .join("");
+
     overlay.innerHTML = `
           <div class="flex items-center justify-center min-h-screen p-4">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full max-h-[80vh] overflow-hidden">
-              <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-4xl w-full max-h-[80vh] overflow-hidden flex flex-col">
+              <div id="modal-header" class="px-6 py-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
                 <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Alternative Sources</h2>
-                <button class="close-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
+                <div class="flex items-center gap-2">
+                  <button class="settings-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" title="Settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </button>
+                  <button class="close-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-              <div class="p-6">
-                <div class="mb-4">
-                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
-                    Searching for: <strong>${comicInfo.title}</strong>
+              <div id="modal-content" class="p-6 flex-1 overflow-y-auto">
+                <div id="search-view">
+                  <div class="mb-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">
+                      Searching for: <strong>${comicInfo.title}</strong>
+                    </p>
+                    <div class="flex gap-2 items-center">
+                      <label class="text-sm text-gray-600 dark:text-gray-400">Use alias:</label>
+                      <select id="alias-selector" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">
+                        <option value="${comicInfo.title}">${comicInfo.title}</option>
+                        ${comicInfo.aliases.map(alias => `<option value="${alias}">${alias}</option>`).join("")}
+                      </select>
+                      <button id="search-btn" class="px-4 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded">
+                        Search
+                      </button>
+                    </div>
+                  </div>
+                  <div id="search-status" class="mb-4 text-sm"></div>
+                  <div id="search-results" class="overflow-y-auto max-h-96"></div>
+                </div>
+                <div id="settings-view" class="hidden">
+                  <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                    Select which sources to search. Disabling unused sources can improve search performance.
                   </p>
-                  <div class="flex gap-2 items-center">
-                    <label class="text-sm text-gray-600 dark:text-gray-400">Use alias:</label>
-                    <select id="alias-selector" class="px-3 py-1 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100">
-                      <option value="${comicInfo.title}">${
-      comicInfo.title
-    }</option>
-                      ${comicInfo.aliases
-                        .map(
-                          (alias) =>
-                            `<option value="${alias}">${alias}</option>`
-                        )
-                        .join("")}
-                    </select>
-                    <button id="search-btn" class="px-4 py-1 bg-blue-500 hover:bg-blue-600 text-white rounded">
-                      Search
-                    </button>
+                  <div class="space-y-2">
+                    ${sourcesHtml}
                   </div>
                 </div>
-                <div id="search-status" class="mb-4 text-sm"></div>
-                <div id="search-results" class="overflow-y-auto max-h-96"></div>
-                <div class="mt-4 flex justify-end gap-2">
-                  <button id="cancel-btn" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">
-                    Cancel
-                  </button>
-                  <button id="save-btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
-                    Save Selected
-                  </button>
-                </div>
+              </div>
+              <div class="px-6 py-4 border-t border-gray-200 dark:border-gray-700 flex justify-end gap-2">
+                <button id="cancel-btn" class="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700">
+                  Cancel
+                </button>
+                <button id="save-btn" class="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded">
+                  Save Selected
+                </button>
               </div>
             </div>
           </div>
@@ -270,13 +312,72 @@
       onClose();
     };
 
+    const modalHeader = overlay.querySelector("#modal-header");
+    const searchView = overlay.querySelector("#search-view");
+    const settingsView = overlay.querySelector("#settings-view");
+    const settingsBtn = overlay.querySelector(".settings-btn");
+    const saveBtn = overlay.querySelector("#save-btn");
+
+    const showSettings = () => {
+      searchView.classList.add("hidden");
+      settingsView.classList.remove("hidden");
+
+      modalHeader.innerHTML = `
+        <div class="flex items-center gap-3">
+          <button class="back-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+          </button>
+          <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Source Settings</h2>
+        </div>
+        <button class="close-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      `;
+
+      saveBtn.textContent = "Save Settings";
+
+      modalHeader.querySelector(".back-btn").addEventListener("click", showSearch);
+      modalHeader.querySelector(".close-btn").addEventListener("click", closeHandler);
+    };
+
+    const showSearch = () => {
+      searchView.classList.remove("hidden");
+      settingsView.classList.add("hidden");
+
+      modalHeader.innerHTML = `
+        <h2 class="text-xl font-semibold text-gray-900 dark:text-gray-100">Alternative Sources</h2>
+        <div class="flex items-center gap-2">
+          <button class="settings-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" title="Settings">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </button>
+          <button class="close-btn text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      `;
+
+      saveBtn.textContent = "Save Selected";
+
+      modalHeader.querySelector(".settings-btn").addEventListener("click", showSettings);
+      modalHeader.querySelector(".close-btn").addEventListener("click", closeHandler);
+    };
+
     overlay.querySelector(".close-btn").addEventListener("click", closeHandler);
-    overlay
-      .querySelector("#cancel-btn")
-      .addEventListener("click", closeHandler);
+    overlay.querySelector("#cancel-btn").addEventListener("click", closeHandler);
     overlay.addEventListener("click", (e) => {
       if (e.target === overlay) closeHandler();
     });
+
+    settingsBtn.addEventListener("click", showSettings);
 
     return overlay;
   };
@@ -333,7 +434,6 @@
     );
     if (!buttonsContainer) return;
 
-    // Check if button already exists, if not add it
     if (!buttonsContainer.querySelector(".source-linker-btn")) {
       const sourceButton = createSourceButton();
       sourceButton.classList.add("source-linker-btn");
@@ -360,15 +460,54 @@
         const performSearch = async () => {
           const query = aliasSelector.value;
           setButtonLoading(searchBtn, true, "Searching...");
+
+          const settings = getSettings();
+          const enabledSourceNames = Object.entries(settings.enabledSources)
+            .filter(([_, enabled]) => enabled)
+            .map(([name]) => name);
+
+          const shouldSearchAll = enabledSourceNames.length === 0 ||
+            enabledSourceNames.length === (sourcesCache?.sources?.length || 0);
+
+          const sourceText = shouldSearchAll
+            ? 'all sources...'
+            : `${enabledSourceNames.length} enabled source${enabledSourceNames.length !== 1 ? 's' : ''}...`;
+
           searchStatus.innerHTML =
-            '<p class="text-blue-500">Searching all sources...</p>';
+            `<p class="text-blue-500">Searching ${sourceText}</p>`;
           searchResults.innerHTML = "";
 
           try {
-            const result = await searchSources(query);
+            let allResults;
+
+            if (shouldSearchAll) {
+              const result = await searchSources(query, 'all');
+              allResults = result.sources;
+            } else {
+              // Search each enabled source individually
+              const searchPromises = enabledSourceNames.map(async (sourceName) => {
+                try {
+                  const result = await searchSources(query, sourceName);
+                  return {
+                    source: sourceName,
+                    results: result.results || []
+                  };
+                } catch (err) {
+                  error(`Failed to search ${sourceName}:`, err);
+                  return {
+                    source: sourceName,
+                    results: [],
+                    error: err instanceof Error ? err.message : "Search failed"
+                  };
+                }
+              });
+
+              allResults = await Promise.all(searchPromises);
+            }
+
             searchStatus.innerHTML =
               '<p class="text-green-500">Search complete!</p>';
-            displaySearchResults(searchResults, result.sources);
+            displaySearchResults(searchResults, allResults);
 
             if (storedSources) {
               storedSources.forEach((stored) => {
@@ -393,8 +532,16 @@
           setButtonLoading(saveBtn, true, "Saving...");
 
           try {
-            const checkboxes =
-              searchResults.querySelectorAll(".source-checkbox");
+            const settingsCheckboxes = modal.querySelectorAll(".source-toggle");
+            const newSettings = { enabledSources: {} };
+
+            settingsCheckboxes.forEach(checkbox => {
+              newSettings.enabledSources[checkbox.dataset.source] = checkbox.checked;
+            });
+
+            saveSettings(newSettings);
+
+            const checkboxes = searchResults.querySelectorAll(".source-checkbox");
             const currentResults = Array.from(checkboxes).map((cb) => ({
               source: cb.dataset.source,
               url: cb.dataset.url,
@@ -404,10 +551,12 @@
 
             const existingStored = storedSources || [];
 
+            // Build a set of current search results for quick lookup
             const currentResultKeys = new Set(
               currentResults.map((r) => `${r.source}:${r.url}`)
             );
 
+            // Keep sources from previous searches that aren't in current results
             const sourcesToKeep = existingStored.filter(
               (stored) =>
                 !currentResultKeys.has(`${stored.source}:${stored.url}`)
@@ -432,7 +581,7 @@
             document.body.removeChild(modal);
             setButtonLoading(sourceButton, false);
           } catch (err) {
-            error("Failed to save sources:", err);
+            error("Failed to save:", err);
             setButtonLoading(saveBtn, false);
           }
         });
@@ -460,6 +609,7 @@
         window.chapterListObserver = new MutationObserver((mutations) => {
           if (isUpdating) return;
 
+          // Ignore changes to our own aggregate rows to avoid infinite loops
           const hasNonAggregateChanges = mutations.some(mutation => {
             return Array.from(mutation.addedNodes).some(node =>
               node.nodeType === 1 && !node.classList.contains('aggregate-chapter-row')
@@ -584,6 +734,7 @@
 
       const newChaptersMap = new Map();
 
+      // Find chapters on alternative sources that aren't on Comick yet
       for (const [sourceName, chapters] of Object.entries(sourceChapters)) {
         for (const chapter of chapters) {
           if (chapter.number > highestComickChapter && !existingChapterNumbers.has(chapter.number)) {
@@ -626,6 +777,7 @@
 
       const availableSources = [];
       for (const [sourceName, chapters] of Object.entries(sourceChapters)) {
+        // Fuzzy match chapter numbers (handles 1 vs 1.0, etc.)
         const matchingChapter = chapters.find(
           (ch) => Math.abs(ch.number - chapterNum) < 0.01
         );
@@ -799,7 +951,6 @@
     } else if (isChapterPage()) {
       setTimeout(() => handleChapterPage(), 500);
     } else {
-      // Clean up observers when navigating away from comic/chapter pages
       if (window.chapterListObserver) {
         window.chapterListObserver.disconnect();
         window.chapterListObserver = null;
