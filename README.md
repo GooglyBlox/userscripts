@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 34
-**Last Updated:** 11/16/2025, 2:22:21 AM
+**Total Scripts:** 35
+**Last Updated:** 11/25/2025, 2:17:25 AM
 
 ## Categories
 
@@ -55,8 +55,9 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Roblox Button Recolor](./scripts/Roblox/roblox-button-recolor/roblox-button-recolor.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548976))
 - [Roblox Friends Banned Account Name Revealer](./scripts/Roblox/roblox-friends-banned-account-name-revealer/roblox-friends-banned-account-name-revealer.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/548885))
 
-### zyBooks (2)
+### zyBooks (3)
 
+- [zyBooks Alt Text Copier](./scripts/zyBooks/zybooks-alt-text-copier/zybooks-alt-text-copier.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/556819))
 - [zyBooks Auto 2x Speed and Step Progression](./scripts/zyBooks/zybooks-auto-2x-speed-and-step-progression/zybooks-auto-2x-speed-and-step-progression.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/551116))
 - [zyBooks Auto Show Answers](./scripts/zyBooks/zybooks-auto-show-answers/zybooks-auto-show-answers.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/552590))
 
