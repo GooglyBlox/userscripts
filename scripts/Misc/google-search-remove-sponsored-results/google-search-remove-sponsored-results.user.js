@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Google Search: Remove Sponsored Results
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Hide Google Search ads/sponsored results
 // @author       GooglyBlox
 // @license      MIT
@@ -19,13 +19,17 @@
 // @downloadURL https://update.greasyfork.org/scripts/550006/Google%20Search%3A%20Remove%20Sponsored%20Results.user.js
 // @updateURL https://update.greasyfork.org/scripts/550006/Google%20Search%3A%20Remove%20Sponsored%20Results.meta.js
 // ==/UserScript==
-
 (function () {
   "use strict";
 
   const AD_SELECTORS = [
+    '#tads',
+    '#tvcap',
     '[data-text-ad="1"]',
-    'span.U3A9Ac.qV8iec'
+    'span.U3A9Ac.qV8iec',
+    '.vbIt3d',
+    '[role="region"][aria-label="Ads"]',
+    '.GUyUUb[data-vcap="1"]'
   ];
 
   const CONTAINER_SELECTORS = [
@@ -42,7 +46,6 @@
   function removeAdElement(element) {
     const container = element.closest(CONTAINER_SELECTORS);
     const targetElement = container || element;
-
     if (targetElement && targetElement.parentElement) {
       targetElement.remove();
     }
@@ -50,7 +53,11 @@
 
   function removeAdsFromNode(node = document) {
     const adElements = node.querySelectorAll(AD_SELECTORS.join(','));
-    adElements.forEach(removeAdElement);
+    adElements.forEach(element => {
+      if (element.parentElement) {
+        element.remove();
+      }
+    });
 
     const adContainers = node.querySelectorAll('.uEierd, .Yu2Dnd, .PLy5Wb');
     adContainers.forEach(container => {
@@ -62,7 +69,7 @@
     const sponsoredElements = node.querySelectorAll('span, div');
     sponsoredElements.forEach(element => {
       const text = element.textContent?.trim().toLowerCase();
-      if (text && text.length <= 20 && (text === 'sponsored' || text === 'ad')) {
+      if (text && text.length <= 20 && (text === 'sponsored' || text === 'ad' || text === 'sponsored results')) {
         removeAdElement(element);
       }
     });
