@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 36
-**Last Updated:** 12/29/2025, 6:54:12 AM
+**Total Scripts:** 37
+**Last Updated:** 12/30/2025, 2:26:20 AM
 
 ## Categories
 
@@ -51,10 +51,11 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
 - [YouTube Redirect Resolver](./scripts/Misc/youtube-redirect-resolver/youtube-redirect-resolver.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550119))
 
-### Roblox (2)
+### Roblox (3)
 
 - [Roblox Button Recolor](./scripts/Roblox/roblox-button-recolor/roblox-button-recolor.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548976))
 - [Roblox Friends Banned Account Name Revealer](./scripts/Roblox/roblox-friends-banned-account-name-revealer/roblox-friends-banned-account-name-revealer.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/548885))
+- [Roblox Uncopylocked Filter](./scripts/Roblox/roblox-uncopylocked-filter/roblox-uncopylocked-filter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560677))
 
 ### zyBooks (3)
 
