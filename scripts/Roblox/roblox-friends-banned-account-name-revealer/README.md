@@ -2,7 +2,7 @@
 
 **Author:** GooglyBlox
 **Category:** Roblox
-**Version:** 1.2
+**Version:** 1.3
 **Greasyfork ID:** 548885
 
 ## Description
