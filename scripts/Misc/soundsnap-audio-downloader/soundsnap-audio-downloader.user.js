@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Soundsnap Audio Downloader
 // @namespace    https://github.com/GooglyBlox/free-soundsnap-audios
-// @version      1.0
+// @version      1.1
 // @description  Directly download audio from Soundsnap without a premium account.
 // @author       GooglyBlox
 // @match        https://www.soundsnap.com/*
@@ -82,8 +82,7 @@
 
     function modifySoundSnapButtons() {
         const downloadButtons = document.querySelectorAll([
-            'a.button-icon.teaser-icons.primary.ojoo-icon-download[href="/products"]',
-            'a.button-icon.teaser-icons.primary.ojoo-icon-download[href="/stock-music/products"]'
+          'a.button-icon.teaser-icons.primary.ojoo-icon-download[href^="/products"]'
         ].join(','));
 
         downloadButtons.forEach(downloadButton => {

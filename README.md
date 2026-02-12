@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 38
-**Last Updated:** 2/12/2026, 3:22:55 AM
+**Last Updated:** 2/12/2026, 1:45:18 PM
 
 ## Categories
 
@@ -47,7 +47,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [ChatGPT UTM Remover](./scripts/Misc/chatgpt-utm-remover/chatgpt-utm-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560593))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550006))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
-- [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/499882))
+- [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Vercel Env Vars Export](./scripts/Misc/vercel-env-vars-export/vercel-env-vars-export.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551210))
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
 - [YouTube Redirect Resolver](./scripts/Misc/youtube-redirect-resolver/youtube-redirect-resolver.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550119))
