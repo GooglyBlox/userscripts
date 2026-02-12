@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 37
-**Last Updated:** 1/18/2026, 1:00:48 PM
+**Total Scripts:** 38
+**Last Updated:** 2/12/2026, 3:22:55 AM
 
 ## Categories
 
@@ -36,9 +36,10 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [GitHub Notifications Highlight](./scripts/GitHub/github-notifications-highlight/github-notifications-highlight.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/525727))
 - [GitHub Profile Time Converter](./scripts/GitHub/github-profile-time-converter/github-profile-time-converter.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/525712))
 
-### Instagram (1)
+### Instagram (2)
 
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
+- [Instagram Profile Post Scraper](./scripts/Instagram/instagram-profile-post-scraper/instagram-profile-post-scraper.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566010))
 
 ### Misc (8)
 
