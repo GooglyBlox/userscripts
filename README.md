@@ -2,13 +2,13 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 38
-**Last Updated:** 2/12/2026, 1:45:18 PM
+**Total Scripts:** 39
+**Last Updated:** 2/16/2026, 1:40:14 PM
 
 ## Categories
 
 
-### Comick (20)
+### Comick (21)
 
 - [Comick 2+ Chapter Timer Fix](./scripts/Comick/comick-2-chapter-timer-fix/comick-2-chapter-timer-fix.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548974))
 - [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/546538))
@@ -21,6 +21,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick MangaUpdates Import (DEPRECATED)](./scripts/Comick/comick-mangaupdates-import-deprecated/comick-mangaupdates-import-deprecated.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))
 - [Comick Random Comic](./scripts/Comick/comick-random-comic/comick-random-comic.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/542278))
+- [Comick Reveal Hidden Comments](./scripts/Comick/comick-reveal-hidden-comments/comick-reveal-hidden-comments.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566443))
 - [Comick Source Linker](./scripts/Comick/comick-source-linker/comick-source-linker.user.js) - v1.7 ([Greasyfork](https://greasyfork.org/scripts/555280))
 - [Comick Tracking Site Banner Remover](./scripts/Comick/comick-tracking-site-banner-remover/comick-tracking-site-banner-remover.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550488))
 - [Comick.dev Comment Counter](./scripts/Comick/comick-dev-comment-counter/comick-dev-comment-counter.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/538153))
