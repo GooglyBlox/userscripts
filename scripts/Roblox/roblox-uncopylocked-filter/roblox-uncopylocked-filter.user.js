@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Roblox Uncopylocked Filter
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Removes games from Uncopylocked searches that aren't actually uncopylocked
 // @author       GooglyBlox
 // @match        https://www.roblox.com/discover*
@@ -22,12 +22,22 @@
     }
 
     function getGameTiles() {
-        return document.querySelectorAll('.game-card-container[data-testid="game-tile"]');
+        return document.querySelectorAll('[data-testid="game-tile"], [data-testid="wide-game-tile"]');
     }
 
     function getUniverseId(tile) {
+        if (tile.id) return tile.id;
+
         const link = tile.querySelector('.game-card-link');
-        return link ? link.id : null;
+        if (link && link.id) return link.id;
+
+        const anchor = tile.querySelector('a[href*="universeId="]');
+        if (anchor) {
+            const match = anchor.href.match(/universeId=(\d+)/);
+            if (match) return match[1];
+        }
+
+        return null;
     }
 
     function checkGames(universeIds) {
@@ -98,8 +108,8 @@
             for (const mutation of mutations) {
                 for (const node of mutation.addedNodes) {
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        if (node.matches?.('.game-card-container[data-testid="game-tile"]') ||
-                            node.querySelector?.('.game-card-container[data-testid="game-tile"]')) {
+                        if (node.matches?.('[data-testid="game-tile"], [data-testid="wide-game-tile"]') ||
+                            node.querySelector?.('[data-testid="game-tile"], [data-testid="wide-game-tile"]')) {
                             hasNewTiles = true;
                             break;
                         }

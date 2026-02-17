@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 39
-**Last Updated:** 2/16/2026, 1:40:14 PM
+**Last Updated:** 2/17/2026, 7:16:59 AM
 
 ## Categories
 
@@ -57,7 +57,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 
 - [Roblox Button Recolor](./scripts/Roblox/roblox-button-recolor/roblox-button-recolor.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548976))
 - [Roblox Friends Banned Account Name Revealer](./scripts/Roblox/roblox-friends-banned-account-name-revealer/roblox-friends-banned-account-name-revealer.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/548885))
-- [Roblox Uncopylocked Filter](./scripts/Roblox/roblox-uncopylocked-filter/roblox-uncopylocked-filter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560677))
+- [Roblox Uncopylocked Filter](./scripts/Roblox/roblox-uncopylocked-filter/roblox-uncopylocked-filter.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/560677))
 
 ### zyBooks (3)
 
