@@ -2,13 +2,13 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 39
-**Last Updated:** 2/17/2026, 7:16:59 AM
+**Total Scripts:** 40
+**Last Updated:** 2/26/2026, 1:44:36 PM
 
 ## Categories
 
 
-### Comick (21)
+### Comick (22)
 
 - [Comick 2+ Chapter Timer Fix](./scripts/Comick/comick-2-chapter-timer-fix/comick-2-chapter-timer-fix.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548974))
 - [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/546538))
@@ -17,6 +17,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick Comic Type Column](./scripts/Comick/comick-comic-type-column/comick-comic-type-column.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/540804))
 - [Comick Dark Mode Enhancer](./scripts/Comick/comick-dark-mode-enhancer/comick-dark-mode-enhancer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/539869))
 - [Comick Docs Fix](./scripts/Comick/comick-docs-fix/comick-docs-fix.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/554802))
+- [Comick Group Mapping](./scripts/Comick/comick-group-mapping/comick-group-mapping.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/567563))
 - [Comick List Date Viewer](./scripts/Comick/comick-list-date-viewer/comick-list-date-viewer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/541476))
 - [Comick MangaUpdates Import (DEPRECATED)](./scripts/Comick/comick-mangaupdates-import-deprecated/comick-mangaupdates-import-deprecated.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))
