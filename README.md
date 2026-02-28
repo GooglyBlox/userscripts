@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 40
-**Last Updated:** 2/26/2026, 1:44:36 PM
+**Last Updated:** 2/28/2026, 1:55:24 AM
 
 ## Categories
 
@@ -17,7 +17,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick Comic Type Column](./scripts/Comick/comick-comic-type-column/comick-comic-type-column.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/540804))
 - [Comick Dark Mode Enhancer](./scripts/Comick/comick-dark-mode-enhancer/comick-dark-mode-enhancer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/539869))
 - [Comick Docs Fix](./scripts/Comick/comick-docs-fix/comick-docs-fix.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/554802))
-- [Comick Group Mapping](./scripts/Comick/comick-group-mapping/comick-group-mapping.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/567563))
+- [Comick Group Mapping](./scripts/Comick/comick-group-mapping/comick-group-mapping.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/567563))
 - [Comick List Date Viewer](./scripts/Comick/comick-list-date-viewer/comick-list-date-viewer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/541476))
 - [Comick MangaUpdates Import (DEPRECATED)](./scripts/Comick/comick-mangaupdates-import-deprecated/comick-mangaupdates-import-deprecated.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))

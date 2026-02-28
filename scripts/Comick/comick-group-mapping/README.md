@@ -2,11 +2,11 @@
 
 **Author:** GooglyBlox
 **Category:** Comick
-**Version:** 1.0
+**Version:** 1.1
 **Greasyfork ID:** 567563
 
 ## Description
-Adds website links to scanlation group pages on comick.dev
+Brings back direct links to scanlation groups
 
 ## Links
 - [Greasyfork Page](https://greasyfork.org/scripts/567563)
