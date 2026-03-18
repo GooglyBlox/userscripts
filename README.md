@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 40
-**Last Updated:** 2/28/2026, 1:55:24 AM
+**Total Scripts:** 41
+**Last Updated:** 3/18/2026, 7:19:01 AM
 
 ## Categories
 
@@ -43,11 +43,12 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 - [Instagram Profile Post Scraper](./scripts/Instagram/instagram-profile-post-scraper/instagram-profile-post-scraper.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566010))
 
-### Misc (8)
+### Misc (9)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [ChatGPT UTM Remover](./scripts/Misc/chatgpt-utm-remover/chatgpt-utm-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560593))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550006))
+- [MangaDex Forum Comments Embed](./scripts/Misc/mangadex-forum-comments-embed/mangadex-forum-comments-embed.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570085))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Vercel Env Vars Export](./scripts/Misc/vercel-env-vars-export/vercel-env-vars-export.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551210))
