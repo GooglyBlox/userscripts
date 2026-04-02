@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 43
-**Last Updated:** 3/24/2026, 3:15:12 AM
+**Total Scripts:** 44
+**Last Updated:** 4/2/2026, 7:42:16 AM
 
 ## Categories
 
@@ -45,10 +45,11 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 - [Instagram Profile Post Scraper](./scripts/Instagram/instagram-profile-post-scraper/instagram-profile-post-scraper.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566010))
 
-### Misc (9)
+### Misc (10)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [ChatGPT UTM Remover](./scripts/Misc/chatgpt-utm-remover/chatgpt-utm-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560593))
+- [Epidemic Sound Audio Downloader](./scripts/Misc/epidemic-sound-audio-downloader/epidemic-sound-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/572169))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550006))
 - [MangaDex Forum Comments Embed](./scripts/Misc/mangadex-forum-comments-embed/mangadex-forum-comments-embed.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570085))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
