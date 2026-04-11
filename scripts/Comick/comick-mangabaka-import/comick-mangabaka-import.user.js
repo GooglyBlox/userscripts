@@ -1,14 +1,14 @@
 // ==UserScript==
-// @name         Comick Anime Planet Import
+// @name         Comick MangaBaka Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.4
-// @description  Import comics from Anime Planet JSON export
+// @version      1.0
+// @description  Import comics from MangaBaka JSON export
 // @author       GooglyBlox
 // @match        https://comick.dev/import
 // @grant        none
 // @license      MIT
-// @downloadURL https://update.greasyfork.org/scripts/546538/Comick%20Anime%20Planet%20Import.user.js
-// @updateURL https://update.greasyfork.org/scripts/546538/Comick%20Anime%20Planet%20Import.meta.js
+// @downloadURL https://update.greasyfork.org/scripts/573409/Comick%20MangaBaka%20Import.user.js
+// @updateURL https://update.greasyfork.org/scripts/573409/Comick%20MangaBaka%20Import.meta.js
 // ==/UserScript==
 
 (function() {
@@ -27,12 +27,21 @@
         5: 'Plan to Read'
     };
 
-    const ANIME_PLANET_STATUS_MAP = {
-        'reading': 1,
-        'read': 2,
-        'stalled': 3,
-        'dropped': 4,
-        'want to read': 5
+    const MANGABAKA_ICON_URL = 'https://www.google.com/s2/favicons?sz=64&domain_url=https://mangabaka.org';
+
+    const MANGABAKA_STATUS_MAP = {
+        considering: 5,
+        plan_to_read: 5,
+        'plan to read': 5,
+        reading: 1,
+        rereading: 1,
+        re_reading: 1,
+        're reading': 1,
+        completed: 2,
+        paused: 3,
+        on_hold: 3,
+        'on hold': 3,
+        dropped: 4
     };
 
     const state = {
@@ -58,49 +67,46 @@
         ) || null;
     }
 
-    function addAnimePlanetIcon() {
-        if (state.iconsAdded && document.querySelector('img[alt="Anime Planet"]')) {
+    function addMangaBakaIcon() {
+        if (state.iconsAdded && document.querySelector('img[alt="MangaBaka"]')) {
             return;
         }
 
         const iconRail = getProviderIconRail();
         if (!iconRail) return;
 
-        const existingAnimePlanetIcon = iconRail.querySelector('img[alt="Anime Planet"]');
-        if (existingAnimePlanetIcon) {
+        const existingMangaBakaIcon = iconRail.querySelector('img[alt="MangaBaka"]');
+        if (existingMangaBakaIcon) {
             state.iconsAdded = true;
             return;
         }
 
-        const animePlanetIcon = document.createElement('div');
-        animePlanetIcon.className = 'flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800';
-        animePlanetIcon.id = 'animeplanet-import-hero-icon';
-        animePlanetIcon.innerHTML = `
-            <div class="h-6 w-6 rounded overflow-hidden">
-                <img src="https://www.anime-planet.com/apple-touch-icon.png?v=WGowMEAKpM" class="h-full w-full object-cover" alt="Anime Planet">
-            </div>
+        const mangaBakaIcon = document.createElement('div');
+        mangaBakaIcon.className = 'flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800';
+        mangaBakaIcon.id = 'mangabaka-import-hero-icon';
+        mangaBakaIcon.innerHTML = `
+            <img src="${MANGABAKA_ICON_URL}" class="h-6 w-6 rounded object-cover" alt="MangaBaka">
         `;
 
-        iconRail.appendChild(animePlanetIcon);
-
+        iconRail.appendChild(mangaBakaIcon);
         state.iconsAdded = true;
     }
 
-    function createAnimePlanetSection() {
+    function createMangaBakaSection() {
         const section = document.createElement('div');
         section.className = 'rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-4 shadow-sm dark:border-gray-700 dark:from-gray-900/80 dark:to-gray-800/70';
-        section.id = 'animeplanet-import-section';
+        section.id = 'mangabaka-import-section';
 
         section.innerHTML = `
             <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div class="min-w-0 flex-1">
                     <div class="flex flex-wrap items-center gap-3">
                         <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
-                            <img src="https://www.anime-planet.com/apple-touch-icon.png?v=WGowMEAKpM" class="h-6 w-6 rounded object-cover" alt="Anime Planet">
+                            <img src="${MANGABAKA_ICON_URL}" class="h-6 w-6 rounded object-cover" alt="MangaBaka">
                         </div>
                         <div class="min-w-0">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Anime Planet</h3>
-                            <p class="text-sm text-gray-600 dark:text-gray-300">Upload the exported JSON file from Anime Planet.</p>
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">MangaBaka</h3>
+                            <p class="text-sm text-gray-600 dark:text-gray-300">Upload the exported JSON file from MangaBaka.</p>
                         </div>
                     </div>
                 </div>
@@ -117,29 +123,29 @@
                 <div class="flex flex-wrap items-center gap-2">
                     <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Upload exported file</h4>
                 </div>
-                <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Choose the JSON export generated by Anime Planet.</p>
+                <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Choose the JSON export generated by MangaBaka.</p>
                 <div class="mt-4 flex flex-col gap-3 lg:flex-row lg:items-end">
                     <div class="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 dark:border-gray-700 dark:bg-gray-900/80">
                         <div class="items-center">
-                            <input type="file" id="animeplanet-file-input" accept=".json" class="block text-sm file:mr-4 file:py-2 my-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:hover:cursor-pointer file:active:border-none">
+                            <input type="file" id="mangabaka-file-input" accept=".json,application/json" class="block text-sm file:mr-4 file:py-2 my-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:hover:cursor-pointer file:active:border-none">
                             <div class="flex space-x-3 items-center">
                                 <div class="text-sm italic text-gray-600 dark:text-gray-300">Choose the .json file</div>
                             </div>
                         </div>
                     </div>
-                    <button id="animeplanet-import-trigger" class="btn lg:mb-1" color="default" disabled>Import</button>
+                    <button id="mangabaka-import-trigger" class="btn lg:mb-1" color="default" disabled>Import</button>
                 </div>
             </div>
-            <div id="animeplanet-progress-section" class="mt-4 hidden">
+            <div id="mangabaka-progress-section" class="mt-4 hidden">
                 <div class="rounded-2xl border border-gray-200 bg-white px-4 py-4 shadow-sm dark:border-gray-700 dark:bg-gray-900/80">
                     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-2">
-                        <span id="animeplanet-progress-text">Processing Anime Planet import...</span>
-                        <span id="animeplanet-progress-count">0/0</span>
+                        <span id="mangabaka-progress-text">Processing MangaBaka import...</span>
+                        <span id="mangabaka-progress-count">0/0</span>
                     </div>
                     <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <div id="animeplanet-progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+                        <div id="mangabaka-progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
                     </div>
-                    <div id="animeplanet-results" class="mt-4 max-h-64 overflow-y-auto"></div>
+                    <div id="mangabaka-results" class="mt-4 max-h-64 overflow-y-auto"></div>
                 </div>
             </div>
         `;
@@ -147,48 +153,43 @@
         return section;
     }
 
-    function addAnimePlanetButton() {
-        if (state.buttonAdded || document.getElementById('animeplanet-import-section')) {
+    function addMangaBakaButton() {
+        if (state.buttonAdded || document.getElementById('mangabaka-import-section')) {
             return;
         }
 
         const gridContainer = getProvidersGrid();
         if (!gridContainer) return;
 
-        const animePlanetSection = createAnimePlanetSection();
-        gridContainer.appendChild(animePlanetSection);
-
+        gridContainer.appendChild(createMangaBakaSection());
         state.buttonAdded = true;
         setupEventListeners();
     }
 
     function setupEventListeners() {
-        const fileInput = document.getElementById('animeplanet-file-input');
-        const importTrigger = document.getElementById('animeplanet-import-trigger');
+        const fileInput = document.getElementById('mangabaka-file-input');
+        const importTrigger = document.getElementById('mangabaka-import-trigger');
 
         if (!fileInput || !importTrigger) return;
 
         importTrigger.addEventListener('click', async () => {
             const file = fileInput.files[0];
             if (file && !state.isProcessing) {
-                await processAnimePlanetFile(file);
+                await processMangaBakaFile(file);
                 fileInput.value = '';
                 importTrigger.disabled = true;
             }
         });
 
         fileInput.addEventListener('change', () => {
-            const importTrigger = document.getElementById('animeplanet-import-trigger');
-            if (importTrigger) {
-                importTrigger.disabled = !fileInput.files[0];
-            }
+            importTrigger.disabled = !fileInput.files[0];
         });
     }
 
-    async function processAnimePlanetFile(file) {
+    async function processMangaBakaFile(file) {
         state.isProcessing = true;
-        const importTrigger = document.getElementById('animeplanet-import-trigger');
-        const progressSection = document.getElementById('animeplanet-progress-section');
+        const importTrigger = document.getElementById('mangabaka-import-trigger');
+        const progressSection = document.getElementById('mangabaka-progress-section');
         const originalBtnContent = importTrigger.textContent;
 
         importTrigger.textContent = 'Processing...';
@@ -197,17 +198,16 @@
 
         try {
             const fileContent = await readFileAsText(file);
-            const animePlanetData = JSON.parse(fileContent);
+            const mangaBakaData = JSON.parse(fileContent);
 
-            if (!animePlanetData.entries || !Array.isArray(animePlanetData.entries)) {
-                throw new Error('Invalid Anime Planet file format. Expected JSON with entries array.');
+            if (!Array.isArray(mangaBakaData)) {
+                throw new Error('Invalid MangaBaka file format. Expected a JSON array.');
             }
 
-            await importFromAnimePlanet(animePlanetData.entries);
-
+            await importFromMangaBaka(mangaBakaData);
         } catch (error) {
-            console.error('Anime Planet import error:', error);
-            showError(`Error processing Anime Planet file: ${error.message}`);
+            console.error('MangaBaka import error:', error);
+            showError(`Error processing MangaBaka file: ${error.message}`);
         } finally {
             state.isProcessing = false;
             importTrigger.disabled = false;
@@ -215,46 +215,43 @@
         }
     }
 
-    async function importFromAnimePlanet(mangaData) {
+    async function importFromMangaBaka(mangaData) {
         const elements = {
-            progressText: document.getElementById('animeplanet-progress-text'),
-            progressCount: document.getElementById('animeplanet-progress-count'),
-            progressBar: document.getElementById('animeplanet-progress-bar'),
-            resultsDiv: document.getElementById('animeplanet-results')
+            progressText: document.getElementById('mangabaka-progress-text'),
+            progressCount: document.getElementById('mangabaka-progress-count'),
+            progressBar: document.getElementById('mangabaka-progress-bar'),
+            resultsDiv: document.getElementById('mangabaka-results')
         };
 
-        const filteredManga = mangaData.filter(manga => {
-            const status = manga.status?.toLowerCase();
-            return status && ANIME_PLANET_STATUS_MAP.hasOwnProperty(status);
-        });
+        const normalizedEntries = mangaData.map(normalizeMangaBakaEntry);
+        const supportedEntries = normalizedEntries.filter(entry => entry.listType !== null);
 
         const stats = {
-            total: filteredManga.length,
+            total: supportedEntries.length,
             processed: 0,
             successful: 0,
             failed: 0,
-            skipped: mangaData.length - filteredManga.length
+            skipped: mangaData.length - supportedEntries.length
         };
 
-        elements.resultsDiv.innerHTML = `<div class="text-sm text-gray-300 mb-2 font-semibold">Anime Planet Import Results:</div>`;
+        elements.resultsDiv.innerHTML = '<div class="text-sm text-gray-700 dark:text-gray-300 mb-2 font-semibold">MangaBaka Import Results:</div>';
 
         if (stats.skipped > 0) {
-            addResultItem('Info', 'info', `Skipped ${stats.skipped} entries with unsupported status`);
+            addResultItem('Info', 'info', `Skipped ${stats.skipped} entries with unsupported status or missing titles`);
         }
 
-        for (const manga of filteredManga) {
-            updateProgress(elements, manga.name, stats);
+        for (const manga of supportedEntries) {
+            updateProgress(elements, manga.displayTitle, stats);
 
-            const listType = ANIME_PLANET_STATUS_MAP[manga.status.toLowerCase()];
-            const listName = READING_LISTS[listType];
-            const result = await processSingleManga(manga, listType, listName);
+            const listName = READING_LISTS[manga.listType];
+            const result = await processSingleManga(manga, listName);
 
             if (result.success) {
                 stats.successful++;
-                addResultItem(manga.name, 'success', result.message);
+                addResultItem(manga.displayTitle, 'success', result.message);
             } else {
                 stats.failed++;
-                addResultItem(manga.name, 'error', result.message);
+                addResultItem(manga.displayTitle, 'error', result.message);
             }
 
             stats.processed++;
@@ -264,21 +261,64 @@
         finalizeImport(elements, stats);
     }
 
-    async function processSingleManga(manga, listType, listName) {
-        try {
-            const searchResults = await searchComic(manga.name);
+    function normalizeMangaBakaEntry(item) {
+        const rawStatus = normalizeStatusValue(item?.entry?.state ?? item?.state ?? item?.status);
+        const titleCandidates = getTitleCandidates(item);
+        const displayTitle = titleCandidates[0] || `MangaBaka #${item?.source?.mangabaka ?? 'Unknown'}`;
 
-            if (!searchResults || searchResults.length === 0) {
+        return {
+            raw: item,
+            rawStatus,
+            listType: titleCandidates.length > 0 ? (MANGABAKA_STATUS_MAP[rawStatus] ?? null) : null,
+            sourceId: item?.source?.mangabaka ?? null,
+            titleCandidates,
+            displayTitle
+        };
+    }
+
+    function normalizeStatusValue(status) {
+        return String(status ?? '')
+            .trim()
+            .toLowerCase()
+            .replace(/[_-]+/g, ' ')
+            .replace(/\s+/g, ' ')
+            .replace(/^re reading$/, 'rereading');
+    }
+
+    function getTitleCandidates(item) {
+        const titles = [
+            item?.titles?.primary,
+            item?.titles?.romanized,
+            item?.titles?.native,
+            item?.title,
+            item?.name
+        ];
+
+        return [...new Set(
+            titles
+                .map(title => String(title ?? '').trim())
+                .filter(Boolean)
+        )];
+    }
+
+    async function processSingleManga(manga, listName) {
+        try {
+            const searchResult = await searchComicWithFallback(manga.titleCandidates);
+
+            if (!searchResult) {
                 return { success: false, message: 'No matches found on Comick' };
             }
 
-            const bestMatch = searchResults[0];
-            const followResult = await followComic(bestMatch.id, listType);
+            const followResult = await followComic(searchResult.match.id, manga.listType);
 
             if (followResult.success) {
+                const searchedWithSuffix = searchResult.searchedWith !== manga.displayTitle
+                    ? ` via ${searchResult.searchedWith}`
+                    : '';
+
                 return {
                     success: true,
-                    message: `Added to ${listName}: ${bestMatch.title}`
+                    message: `Added to ${listName}: ${searchResult.match.title}${searchedWithSuffix}`
                 };
             }
 
@@ -286,10 +326,23 @@
                 success: false,
                 message: `Failed to follow (Status: ${followResult.status})`
             };
-
         } catch (error) {
             return { success: false, message: error.message };
         }
+    }
+
+    async function searchComicWithFallback(titleCandidates) {
+        for (const title of titleCandidates) {
+            const searchResults = await searchComic(title);
+            if (Array.isArray(searchResults) && searchResults.length > 0) {
+                return {
+                    match: searchResults[0],
+                    searchedWith: title
+                };
+            }
+        }
+
+        return null;
     }
 
     async function searchComic(title) {
@@ -310,12 +363,12 @@
         return response.json();
     }
 
-    async function followComic(comicId, listType = 1) {
+    async function followComic(comicId, listType) {
         try {
             const response = await fetch(API_ENDPOINTS.follow, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json',
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     id: comicId,
@@ -341,17 +394,17 @@
     function updateProgress(elements, title, stats) {
         elements.progressText.textContent = `Processing: ${title}`;
         elements.progressCount.textContent = `${stats.processed}/${stats.total}`;
-        elements.progressBar.style.width = `${(stats.processed / stats.total) * 100}%`;
+        elements.progressBar.style.width = `${(stats.processed / Math.max(stats.total, 1)) * 100}%`;
     }
 
     function finalizeImport(elements, stats) {
-        elements.progressText.textContent = `Anime Planet import complete: ${stats.successful} successful, ${stats.failed} failed`;
+        elements.progressText.textContent = `MangaBaka import complete: ${stats.successful} successful, ${stats.failed} failed`;
         elements.progressCount.textContent = `${stats.processed}/${stats.total}`;
         elements.progressBar.style.width = '100%';
     }
 
     function addResultItem(title, type, message) {
-        const resultsDiv = document.getElementById('animeplanet-results');
+        const resultsDiv = document.getElementById('mangabaka-results');
         const resultItem = document.createElement('div');
 
         let colorClass;
@@ -374,14 +427,14 @@
     }
 
     function showError(message) {
-        const resultsDiv = document.getElementById('animeplanet-results');
+        const resultsDiv = document.getElementById('mangabaka-results');
         resultsDiv.innerHTML = `<div class="text-red-700 dark:text-red-400 text-sm p-2 bg-red-100 dark:bg-red-900/20 rounded">${escapeHtml(message)}</div>`;
     }
 
     function readFileAsText(file) {
         return new Promise((resolve, reject) => {
             const reader = new FileReader();
-            reader.onload = (e) => resolve(e.target.result);
+            reader.onload = (event) => resolve(event.target.result);
             reader.onerror = () => reject(new Error('Failed to read file'));
             reader.readAsText(file);
         });
@@ -398,9 +451,7 @@
     }
 
     function checkElementsExist() {
-        const iconExists = document.querySelector('img[alt="Anime Planet"]');
-
-        if (!iconExists) {
+        if (!document.querySelector('img[alt="MangaBaka"]')) {
             state.iconsAdded = false;
         }
     }
@@ -419,10 +470,10 @@
 
         if (hasRequiredElements) {
             checkElementsExist();
-            addAnimePlanetIcon();
+            addMangaBakaIcon();
 
             if (!state.buttonAdded) {
-                setTimeout(addAnimePlanetButton, 100);
+                setTimeout(addMangaBakaButton, 100);
             }
         }
     }
@@ -431,10 +482,10 @@
         state.buttonAdded = false;
         state.iconsAdded = false;
 
-        const animePlanetSection = document.getElementById('animeplanet-import-section');
-        const animePlanetIcon = document.getElementById('animeplanet-import-hero-icon');
+        const mangaBakaSection = document.getElementById('mangabaka-import-section');
+        const mangaBakaIcon = document.getElementById('mangabaka-import-hero-icon');
 
-        [animePlanetSection, animePlanetIcon].forEach(el => el?.remove());
+        [mangaBakaSection, mangaBakaIcon].forEach(element => element?.remove());
     }
 
     function startObserver() {
