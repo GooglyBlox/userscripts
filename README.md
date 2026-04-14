@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 47
-**Last Updated:** 4/12/2026, 3:47:31 AM
+**Total Scripts:** 48
+**Last Updated:** 4/14/2026, 8:04:54 AM
 
 ## Categories
 
@@ -47,7 +47,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 - [Instagram Profile Post Scraper](./scripts/Instagram/instagram-profile-post-scraper/instagram-profile-post-scraper.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566010))
 
-### Misc (11)
+### Misc (12)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [ChatGPT UTM Remover](./scripts/Misc/chatgpt-utm-remover/chatgpt-utm-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560593))
@@ -56,6 +56,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [MangaDex Forum Comments Embed](./scripts/Misc/mangadex-forum-comments-embed/mangadex-forum-comments-embed.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570085))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [OnePiecedle Answer History](./scripts/Misc/onepiecedle-answer-history/onepiecedle-answer-history.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/572582))
+- [Reddit Gallery Slide Counter](./scripts/Misc/reddit-gallery-slide-counter/reddit-gallery-slide-counter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/573850))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Vercel Env Vars Export](./scripts/Misc/vercel-env-vars-export/vercel-env-vars-export.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551210))
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
