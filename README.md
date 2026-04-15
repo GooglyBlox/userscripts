@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 48
-**Last Updated:** 4/14/2026, 8:04:54 AM
+**Total Scripts:** 49
+**Last Updated:** 4/15/2026, 2:06:14 PM
 
 ## Categories
 
@@ -47,12 +47,13 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 - [Instagram Profile Post Scraper](./scripts/Instagram/instagram-profile-post-scraper/instagram-profile-post-scraper.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566010))
 
-### Misc (12)
+### Misc (13)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [ChatGPT UTM Remover](./scripts/Misc/chatgpt-utm-remover/chatgpt-utm-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560593))
 - [Epidemic Sound Audio Downloader](./scripts/Misc/epidemic-sound-audio-downloader/epidemic-sound-audio-downloader.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/572169))
 - [Google Search: Remove Sponsored Results](./scripts/Misc/google-search-remove-sponsored-results/google-search-remove-sponsored-results.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550006))
+- [HumanizeAI Pro Unlocker](./scripts/Misc/humanizeai-pro-unlocker/humanizeai-pro-unlocker.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/574018))
 - [MangaDex Forum Comments Embed](./scripts/Misc/mangadex-forum-comments-embed/mangadex-forum-comments-embed.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570085))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
 - [OnePiecedle Answer History](./scripts/Misc/onepiecedle-answer-history/onepiecedle-answer-history.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/572582))
