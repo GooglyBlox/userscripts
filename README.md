@@ -2,13 +2,13 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 49
-**Last Updated:** 4/15/2026, 2:06:14 PM
+**Total Scripts:** 50
+**Last Updated:** 4/20/2026, 3:53:11 AM
 
 ## Categories
 
 
-### Comick (26)
+### Comick (27)
 
 - [Comick 2+ Chapter Timer Fix](./scripts/Comick/comick-2-chapter-timer-fix/comick-2-chapter-timer-fix.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548974))
 - [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.4 ([Greasyfork](https://greasyfork.org/scripts/546538))
@@ -29,6 +29,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick Reveal Hidden Comments](./scripts/Comick/comick-reveal-hidden-comments/comick-reveal-hidden-comments.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566443))
 - [Comick Source Linker](./scripts/Comick/comick-source-linker/comick-source-linker.user.js) - v1.7 ([Greasyfork](https://greasyfork.org/scripts/555280))
 - [Comick Tracking Site Banner Remover](./scripts/Comick/comick-tracking-site-banner-remover/comick-tracking-site-banner-remover.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/550488))
+- [Comick User Blocker](./scripts/Comick/comick-user-blocker/comick-user-blocker.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/574667))
 - [Comick.dev Comment Counter](./scripts/Comick/comick-dev-comment-counter/comick-dev-comment-counter.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/538153))
 - [Comick.dev Comment Image Minimizer](./scripts/Comick/comick-dev-comment-image-minimizer/comick-dev-comment-image-minimizer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/540889))
 - [Comick.dev Native Zoom Control](./scripts/Comick/comick-dev-native-zoom-control/comick-dev-native-zoom-control.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/545969))
