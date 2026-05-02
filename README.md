@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 50
-**Last Updated:** 4/20/2026, 3:53:11 AM
+**Last Updated:** 5/2/2026, 8:00:40 AM
 
 ## Categories
 
@@ -57,7 +57,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [HumanizeAI Pro Unlocker](./scripts/Misc/humanizeai-pro-unlocker/humanizeai-pro-unlocker.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/574018))
 - [MangaDex Forum Comments Embed](./scripts/Misc/mangadex-forum-comments-embed/mangadex-forum-comments-embed.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570085))
 - [Numerade Video Viewer](./scripts/Misc/numerade-video-viewer/numerade-video-viewer.user.js) - v1.9 ([Greasyfork](https://greasyfork.org/scripts/492802))
-- [OnePiecedle Answer History](./scripts/Misc/onepiecedle-answer-history/onepiecedle-answer-history.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/572582))
+- [OnePiecedle Answer History](./scripts/Misc/onepiecedle-answer-history/onepiecedle-answer-history.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/572582))
 - [Reddit Gallery Slide Counter](./scripts/Misc/reddit-gallery-slide-counter/reddit-gallery-slide-counter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/573850))
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Vercel Env Vars Export](./scripts/Misc/vercel-env-vars-export/vercel-env-vars-export.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551210))

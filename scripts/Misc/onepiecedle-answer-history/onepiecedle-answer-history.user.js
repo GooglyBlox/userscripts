@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         OnePiecedle Answer History
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Tracks and displays your correct OnePiecedle answers across all game modes
 // @author       GooglyBlox
 // @match        https://onepiecedle.net/*
@@ -279,6 +279,10 @@
     header.appendChild(closeBtn);
     modal.appendChild(header);
 
+    const body = document.createElement("div");
+    body.className = "opd-history-body";
+    modal.appendChild(body);
+
     const modeStrip = document.createElement("div");
     modeStrip.className = "games-progress-container opd-history-mode-strip";
 
@@ -311,9 +315,8 @@
     }
 
     modeStrip.appendChild(imagesContainer);
-    modal.appendChild(modeStrip);
+    body.appendChild(modeStrip);
 
-    // --- Today's answers ---
     const todaySection = document.createElement("div");
     todaySection.className = "opd-history-section";
 
@@ -369,11 +372,10 @@
     }
 
     todaySection.appendChild(todayGrid);
-    modal.appendChild(todaySection);
+    body.appendChild(todaySection);
 
-    // --- Previous days ---
     const pastSection = document.createElement("div");
-    pastSection.className = "opd-history-section";
+    pastSection.className = "opd-history-section opd-history-past-section";
 
     const pastHeader = document.createElement("div");
     pastHeader.className = "opd-history-section-title";
@@ -476,9 +478,8 @@
       pastSection.appendChild(table);
     }
 
-    modal.appendChild(pastSection);
+    body.appendChild(pastSection);
 
-    // --- Clear data ---
     const clearBtn = document.createElement("div");
     clearBtn.className = "opd-history-clear";
     clearBtn.textContent = "Clear history";
@@ -555,16 +556,94 @@
 
   GM_addStyle(`
       .opd-history-shell {
-        z-index: 99999;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: 99999 !important;
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        overflow: hidden !important;
+      }
+
+      .opd-history-shell .vm--overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 0;
       }
 
       .opd-history-modal {
+        position: relative;
+        z-index: 1;
         width: min(760px, calc(100vw - 24px));
         max-width: 760px;
         max-height: calc(100vh - 40px);
         margin: 20px auto;
-        overflow-y: auto;
         padding: 22px 22px 18px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+
+      .opd-history-modal .opd-history-header {
+        flex: 0 0 auto;
+      }
+
+      .opd-history-body {
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 6px;
+        margin-right: -6px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 0, 0, 0.25) transparent;
+      }
+
+      .opd-history-body::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+        background: transparent;
+      }
+
+      .opd-history-body::-webkit-scrollbar-track,
+      .opd-history-body::-webkit-scrollbar-corner {
+        background: transparent;
+        border: 0;
+        box-shadow: none;
+      }
+
+      .opd-history-body::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.22);
+        border-radius: 999px;
+        border: 0;
+        min-height: 32px;
+      }
+
+      .opd-history-body::-webkit-scrollbar-thumb:hover {
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .opd-history-body::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+      }
+
+      .opd-history-modal .opd-history-clear {
+        flex: 0 0 auto;
       }
 
       .opd-history-header {
