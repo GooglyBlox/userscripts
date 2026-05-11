@@ -2,8 +2,8 @@
 
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
-**Total Scripts:** 50
-**Last Updated:** 5/2/2026, 8:00:40 AM
+**Total Scripts:** 51
+**Last Updated:** 5/11/2026, 10:00:35 AM
 
 ## Categories
 
@@ -48,7 +48,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Instagram Profile Picture Opener](./scripts/Instagram/instagram-profile-picture-opener/instagram-profile-picture-opener.user.js) - v1.3 ([Greasyfork](https://greasyfork.org/scripts/525719))
 - [Instagram Profile Post Scraper](./scripts/Instagram/instagram-profile-post-scraper/instagram-profile-post-scraper.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/566010))
 
-### Misc (13)
+### Misc (14)
 
 - [ChatGPT Edit Cancel Confirmation](./scripts/Misc/chatgpt-edit-cancel-confirmation/chatgpt-edit-cancel-confirmation.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/525714))
 - [ChatGPT UTM Remover](./scripts/Misc/chatgpt-utm-remover/chatgpt-utm-remover.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/560593))
@@ -62,6 +62,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Soundsnap Audio Downloader](./scripts/Misc/soundsnap-audio-downloader/soundsnap-audio-downloader.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/499882))
 - [Vercel Env Vars Export](./scripts/Misc/vercel-env-vars-export/vercel-env-vars-export.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/551210))
 - [Webtoon Subscriptions Exporter](./scripts/Misc/webtoon-subscriptions-exporter/webtoon-subscriptions-exporter.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550023))
+- [WikiGacha Auto Gacha](./scripts/Misc/wikigacha-auto-gacha/wikigacha-auto-gacha.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/577536))
 - [YouTube Redirect Resolver](./scripts/Misc/youtube-redirect-resolver/youtube-redirect-resolver.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/550119))
 
 ### Roblox (3)
