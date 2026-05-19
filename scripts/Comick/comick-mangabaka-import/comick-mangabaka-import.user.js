@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Comick MangaBaka Import
 // @namespace    https://github.com/GooglyBlox
-// @version      1.0
+// @version      1.1
 // @description  Import comics from MangaBaka JSON export
 // @author       GooglyBlox
 // @match        https://comick.dev/import
@@ -58,7 +58,7 @@
     }
 
     function getProvidersGrid() {
-        return getImportProvidersSection()?.querySelector('.grid.grid-cols-1.gap-4') || null;
+        return getImportProvidersSection()?.querySelector('.space-y-3, .grid.grid-cols-1.gap-4') || null;
     }
 
     function getProviderIconRail() {
@@ -82,30 +82,50 @@
         }
 
         const mangaBakaIcon = document.createElement('div');
-        mangaBakaIcon.className = 'flex h-9 w-9 items-center justify-center rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-800';
+        mangaBakaIcon.className = 'flex h-8 w-8 items-center justify-center rounded-lg bg-white dark:bg-gray-800';
         mangaBakaIcon.id = 'mangabaka-import-hero-icon';
         mangaBakaIcon.innerHTML = `
-            <img src="${MANGABAKA_ICON_URL}" class="h-6 w-6 rounded object-cover" alt="MangaBaka">
+            <img src="${MANGABAKA_ICON_URL}" class="h-5 w-5 rounded object-cover" alt="MangaBaka">
         `;
 
         iconRail.appendChild(mangaBakaIcon);
         state.iconsAdded = true;
     }
 
+    function ensureMangaBakaStyles() {
+        if (document.getElementById('mangabaka-import-styles')) return;
+        const style = document.createElement('style');
+        style.id = 'mangabaka-import-styles';
+        style.textContent = `
+            .mb-import-card { background-color: rgb(240 253 250 / 0.75); }
+            .dark .mb-import-card { background-color: rgb(4 47 46 / 0.2); }
+            .mb-import-bar { background-color: rgb(20 184 166); }
+            .mb-import-icon-tile { background-color: rgb(204 251 241); }
+            .dark .mb-import-icon-tile { background-color: rgb(20 184 166 / 0.15); }
+            .mb-import-title { color: rgb(15 118 110); }
+            .dark .mb-import-title { color: rgb(94 234 212); }
+            .mb-import-progress { background-color: rgb(13 148 136); }
+        `;
+        document.head.appendChild(style);
+    }
+
     function createMangaBakaSection() {
+        ensureMangaBakaStyles();
+
         const section = document.createElement('div');
-        section.className = 'rounded-2xl border border-gray-200 bg-gradient-to-br from-gray-50 to-white p-4 shadow-sm dark:border-gray-700 dark:from-gray-900/80 dark:to-gray-800/70';
+        section.className = 'mb-import-card relative overflow-hidden rounded-xl py-5 pl-5 pr-4';
         section.id = 'mangabaka-import-section';
 
         section.innerHTML = `
+            <div class="mb-import-bar absolute inset-y-4 left-0 w-1 rounded-r-full"></div>
             <div class="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div class="min-w-0 flex-1">
                     <div class="flex flex-wrap items-center gap-3">
-                        <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                        <div class="mb-import-icon-tile flex h-12 w-12 items-center justify-center rounded-xl overflow-hidden">
                             <img src="${MANGABAKA_ICON_URL}" class="h-6 w-6 rounded object-cover" alt="MangaBaka">
                         </div>
                         <div class="min-w-0">
-                            <h3 class="text-lg font-semibold text-gray-900 dark:text-white">MangaBaka</h3>
+                            <h3 class="mb-import-title text-lg font-semibold">MangaBaka</h3>
                             <p class="text-sm text-gray-600 dark:text-gray-300">Upload the exported JSON file from MangaBaka.</p>
                         </div>
                     </div>
@@ -114,22 +134,22 @@
                     <div class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300">
                         Ready to import
                     </div>
-                    <div class="inline-flex items-center rounded-full border border-gray-200 bg-white px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-300">
+                    <div class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-600 dark:bg-gray-800 dark:text-gray-300">
                         File upload
                     </div>
                 </div>
             </div>
-            <div class="mt-4 rounded-2xl border border-dashed border-gray-300 bg-gray-50/80 p-4 dark:border-gray-600 dark:bg-gray-800/40">
+            <div class="mt-4 rounded-xl bg-gray-50/80 p-4 dark:bg-gray-800/40">
                 <div class="flex flex-wrap items-center gap-2">
                     <h4 class="text-sm font-semibold text-gray-900 dark:text-white">Upload exported file</h4>
                 </div>
                 <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-300">Choose the JSON export generated by MangaBaka.</p>
                 <div class="mt-4 flex flex-col gap-3 lg:flex-row lg:items-end">
-                    <div class="flex-1 rounded-xl border border-gray-200 bg-white px-4 py-3 dark:border-gray-700 dark:bg-gray-900/80">
+                    <div class="flex-1 rounded-lg bg-white px-4 py-3 dark:bg-gray-900/80">
                         <div class="items-center">
                             <input type="file" id="mangabaka-file-input" accept=".json,application/json" class="block text-sm file:mr-4 file:py-2 my-2 file:px-4 file:rounded file:border-0 file:text-sm file:font-semibold file:hover:cursor-pointer file:active:border-none">
                             <div class="flex space-x-3 items-center">
-                                <div class="text-sm italic text-gray-600 dark:text-gray-300">Choose the .json file</div>
+                                <div class="text-sm italic">Choose the .json file</div>
                             </div>
                         </div>
                     </div>
@@ -137,13 +157,13 @@
                 </div>
             </div>
             <div id="mangabaka-progress-section" class="mt-4 hidden">
-                <div class="rounded-2xl border border-gray-200 bg-white px-4 py-4 shadow-sm dark:border-gray-700 dark:bg-gray-900/80">
+                <div class="rounded-xl bg-white px-4 py-4 dark:bg-gray-900/80">
                     <div class="flex justify-between text-sm text-gray-600 dark:text-gray-300 mb-2">
                         <span id="mangabaka-progress-text">Processing MangaBaka import...</span>
                         <span id="mangabaka-progress-count">0/0</span>
                     </div>
                     <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                        <div id="mangabaka-progress-bar" class="bg-blue-600 h-2 rounded-full" style="width: 0%"></div>
+                        <div id="mangabaka-progress-bar" class="mb-import-progress h-2 rounded-full" style="width: 0%"></div>
                     </div>
                     <div id="mangabaka-results" class="mt-4 max-h-64 overflow-y-auto"></div>
                 </div>

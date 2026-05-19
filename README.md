@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 51
-**Last Updated:** 5/11/2026, 10:00:35 AM
+**Last Updated:** 5/19/2026, 3:50:44 PM
 
 ## Categories
 
@@ -11,7 +11,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 ### Comick (27)
 
 - [Comick 2+ Chapter Timer Fix](./scripts/Comick/comick-2-chapter-timer-fix/comick-2-chapter-timer-fix.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548974))
-- [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.4 ([Greasyfork](https://greasyfork.org/scripts/546538))
+- [Comick Anime Planet Import](./scripts/Comick/comick-anime-planet-import/comick-anime-planet-import.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/546538))
 - [Comick Auto Follow on Read](./scripts/Comick/comick-auto-follow-on-read/comick-auto-follow-on-read.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/548074))
 - [Comick Chapter Timer](./scripts/Comick/comick-chapter-timer/comick-chapter-timer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/545352))
 - [Comick Comic Type Column](./scripts/Comick/comick-comic-type-column/comick-comic-type-column.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/540804))
@@ -19,7 +19,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick Docs Fix](./scripts/Comick/comick-docs-fix/comick-docs-fix.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/554802))
 - [Comick Group Mapping](./scripts/Comick/comick-group-mapping/comick-group-mapping.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/567563))
 - [Comick List Date Viewer](./scripts/Comick/comick-list-date-viewer/comick-list-date-viewer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/541476))
-- [Comick MangaBaka Import](./scripts/Comick/comick-mangabaka-import/comick-mangabaka-import.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/573409))
+- [Comick MangaBaka Import](./scripts/Comick/comick-mangabaka-import/comick-mangabaka-import.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/573409))
 - [Comick MangaUpdates Import (DEPRECATED)](./scripts/Comick/comick-mangaupdates-import-deprecated/comick-mangaupdates-import-deprecated.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))
 - [Comick Move Reviews Below Chapters](./scripts/Comick/comick-move-reviews-below-chapters/comick-move-reviews-below-chapters.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570912))
