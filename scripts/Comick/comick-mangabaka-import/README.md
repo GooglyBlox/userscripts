@@ -2,11 +2,11 @@
 
 **Author:** GooglyBlox
 **Category:** Comick
-**Version:** 1.1
+**Version:** 1.2
 **Greasyfork ID:** 573409
 
 ## Description
-Import comics from MangaBaka JSON export
+Import comics from MangaBaka JSON or MAL XML export
 
 ## Links
 - [Greasyfork Page](https://greasyfork.org/scripts/573409)

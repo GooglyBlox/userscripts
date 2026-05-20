@@ -3,7 +3,7 @@
 This repository contains all userscripts published by **GooglyBlox** on Greasyfork.
 
 **Total Scripts:** 51
-**Last Updated:** 5/19/2026, 3:50:44 PM
+**Last Updated:** 5/20/2026, 3:58:16 PM
 
 ## Categories
 
@@ -19,7 +19,7 @@ This repository contains all userscripts published by **GooglyBlox** on Greasyfo
 - [Comick Docs Fix](./scripts/Comick/comick-docs-fix/comick-docs-fix.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/554802))
 - [Comick Group Mapping](./scripts/Comick/comick-group-mapping/comick-group-mapping.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/567563))
 - [Comick List Date Viewer](./scripts/Comick/comick-list-date-viewer/comick-list-date-viewer.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/541476))
-- [Comick MangaBaka Import](./scripts/Comick/comick-mangabaka-import/comick-mangabaka-import.user.js) - v1.1 ([Greasyfork](https://greasyfork.org/scripts/573409))
+- [Comick MangaBaka Import](./scripts/Comick/comick-mangabaka-import/comick-mangabaka-import.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/573409))
 - [Comick MangaUpdates Import (DEPRECATED)](./scripts/Comick/comick-mangaupdates-import-deprecated/comick-mangaupdates-import-deprecated.user.js) - v1.5 ([Greasyfork](https://greasyfork.org/scripts/544792))
 - [Comick Mention Notifier](./scripts/Comick/comick-mention-notifier/comick-mention-notifier.user.js) - v1.2 ([Greasyfork](https://greasyfork.org/scripts/545346))
 - [Comick Move Reviews Below Chapters](./scripts/Comick/comick-move-reviews-below-chapters/comick-move-reviews-below-chapters.user.js) - v1.0 ([Greasyfork](https://greasyfork.org/scripts/570912))
